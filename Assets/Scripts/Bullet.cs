@@ -24,9 +24,9 @@ public class Bullet : MonoBehaviour
     {
         
     }
-    public void init(Transform target)
+    public void init(Transform enemyTarget)
     {
-        _target = target;   
+        _target = enemyTarget;   
         _dir = (_target.position - transform.position).normalized;
     }
 

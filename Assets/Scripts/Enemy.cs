@@ -7,9 +7,11 @@ using UnityEngine.Analytics;
 public class Enemy : MonoBehaviour
 {
 
-    Transform _unit;
+    Transform _unitBox;
     EnemyController _EC;
     SpriteRenderer _render;
+
+    Vector3 posGoal;
 
     float _enemySpeed;
     int _enemyHP;
@@ -30,20 +32,20 @@ public class Enemy : MonoBehaviour
         
     }
 
-    public void init(EnemyController EC, Transform unit)
+    public void init(EnemyController EC, Transform unitBox)
     {
         isDie = false;
-        _unit = unit;
+        _unitBox = unitBox;
         _EC = EC;
         _enemySpeed = 1;
         _enemyHP = 20;
         gameObject.SetActive(true);
-        Vector3 ranPos = _unit.position + new Vector3(Random.Range(-60f, 0), 0, Random.Range(-20f, 20f)).normalized;
+        Vector3 ranPos = _unitBox.position + new Vector3(Random.Range(-60f, -10f), 0, Random.Range(-20f, 20f));
         transform.position = ranPos;
         Debug.Log("Àû »ý¼º");
     }
 
-    void Live()
+    /*void Live()
     {
         isDie = false;
     }
@@ -51,7 +53,7 @@ public class Enemy : MonoBehaviour
     void Move()
     {
     
-    }
+    }*/
 
     void ChangeHitColor()
     {
@@ -87,5 +89,15 @@ public class Enemy : MonoBehaviour
         {
             isDie = true;
         }
+    }
+
+    IEnumerator Roaming()
+    {
+        while(true)
+        {
+            posGoal = new Vector3(0, 0, Random.Range(-5f, 5f));
+            yield return WaitForSeconds(1f);
+        }
+        
     }
 }
