@@ -91,13 +91,13 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    IEnumerator Roaming()
-    {
-        while(true)
-        {
-            posGoal = new Vector3(0, 0, Random.Range(-5f, 5f));
-            yield return WaitForSeconds(1f);
-        }
+    //IEnumerator Roaming()
+    //{
+    //    while(true)
+    //    {
+    //        posGoal = new Vector3(0, 0, Random.Range(-5f, 5f));
+            
+    //    }
         
-    }
+    //}
 }
