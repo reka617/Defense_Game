@@ -9,18 +9,18 @@ using UnityEngine.UI;
 public class LoginGameUI : MonoBehaviour
 {
     [SerializeField] GameObject RegistPanel;
-    void OnClickedRegistButton()
+    public void OnClickedRegistButton()
     {
         RegistPanel.gameObject.SetActive(true);
     }
 
-    void OnClickedLoginButton()
+    public void OnClickedLoginButton()
     {
         //유저정보가 있을때
         SceneManager.LoadScene("Lobby");
     }
 
-    void OnclickedCheckButton()
+    public void OnclickedCheckButton()
     {
         RegistPanel.gameObject.SetActive(false);
     }

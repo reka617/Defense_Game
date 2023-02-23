@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class LobbyGameUI : MonoBehaviour
 {
+    
     public void OnButtonGotoCafeScene()
     {
         SceneManager.LoadScene("Cafe");
@@ -17,6 +18,11 @@ public class LobbyGameUI : MonoBehaviour
     public void OnButtonGotoShopScene()
     {
         SceneManager.LoadScene("Shop");
+    }
+
+    public void OnButtonNextStage()
+    {
+
     }
 
 

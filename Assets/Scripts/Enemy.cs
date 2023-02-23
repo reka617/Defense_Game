@@ -40,7 +40,7 @@ public class Enemy : MonoBehaviour
         _enemySpeed = 1;
         _enemyHP = 20;
         gameObject.SetActive(true);
-        Vector3 ranPos = _unitBox.position + new Vector3(Random.Range(-60f, -10f), 0, Random.Range(-20f, 20f));
+        Vector3 ranPos = _unitBox.position + new Vector3(Random.Range(-60f, -10f), 0, Random.Range(-15f, 15f));
         transform.position = ranPos;
         Debug.Log("Àû »ý¼º");
     }
