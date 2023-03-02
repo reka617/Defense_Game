@@ -6,7 +6,7 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField]
-    Transform _unitBox;
+    Transform _studentPosition;
 
     GameObject _enemy;
 
@@ -36,7 +36,7 @@ public class EnemyController : MonoBehaviour
 
         foreach (Enemy enemy in enemies)
         {
-            enemy.init(this, _unitBox);
+            enemy.init(this, _studentPosition);
         }
     }
 
@@ -47,7 +47,7 @@ public class EnemyController : MonoBehaviour
         {
             if (_enemy.gameObject.activeSelf == false)
             {
-                _enemy.init(this, _unitBox);
+                _enemy.init(this, _studentPosition);
                 isNew = false;
                 break;
             }
@@ -55,20 +55,20 @@ public class EnemyController : MonoBehaviour
         if (isNew)
         {
             GameObject enemy = Instantiate(_enemy);
-            enemy.GetComponent<Enemy>().init(this, _unitBox);
+            enemy.GetComponent<Enemy>().init(this, _studentPosition);
             enemies.Add(enemy.GetComponent<Enemy>());
         }
     }
 
     public Transform selectEnemy()
     {
-        float distance = 0f;
+        float distance = 60f;
         Transform target = null;
         foreach (Enemy enemy in enemies)
         {
-            if (distance <= Vector3.Distance(enemy.transform.position, _unitBox.position) || target == null)
+            if (distance >= Vector3.Distance(enemy.transform.position, _studentPosition.position) || target == null)
             {
-                distance = Vector3.Distance(enemy.transform.position, _unitBox.position);
+                distance = Vector3.Distance(enemy.transform.position, _studentPosition.position);
                 target = enemy.transform;
             }
         }

@@ -5,10 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class LobbyGameUI : MonoBehaviour
 {
+    [SerializeField] GameObject CafePanel;
     
-    public void OnButtonGotoCafeScene()
+    public void OnButtonOpenCafePanel()
     {
-        SceneManager.LoadScene("Cafe");
+        CafePanel.SetActive(true);
+    }
+
+    public void OnButtonCloseCafePanel()
+    {
+        CafePanel.SetActive(false);
     }
     public void OnButtonGotoCharacterScene()
     {

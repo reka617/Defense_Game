@@ -6,6 +6,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Bullet : MonoBehaviour
 {
+    EnemyController EC;
 
     [SerializeField]
     float bulletSpeed;
@@ -16,7 +17,7 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -24,15 +25,10 @@ public class Bullet : MonoBehaviour
     {
         
     }
-    public void init(Transform enemyTarget)
+    public void init(EnemyController EC)
     {
-        _target = enemyTarget;   
+        _target = EC.selectEnemy();   
         _dir = (_target.position - transform.position).normalized;
-    }
-
-    public void init(Vector3 dir)
-    {
-        _dir = dir;
     }
 
     void bulletMove(Transform target)
