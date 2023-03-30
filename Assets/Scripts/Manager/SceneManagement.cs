@@ -10,4 +10,30 @@ public class SceneManagement : MonoBehaviour
         SceneManager.LoadScene("Lobby");
 
     }
+    public void OnButtonGotoCharacterScene()
+    {
+        SceneManager.LoadScene("Character");
+    }
+
+    public void OnButtonGotoShopScene()
+    {
+        SceneManager.LoadScene("Shop");
+    }
+
+    public void GotoStageScene()
+    {
+        SceneManager.LoadScene("Stage1");
+    }
+
+    public void GotoStageSelectScene()
+    {
+        SceneManager.LoadScene("StageSelect");
+    }
+
+    public void GotoLobbyScene()
+    {
+        SceneManager.LoadScene("Lobby");
+    }
+
+    
 }

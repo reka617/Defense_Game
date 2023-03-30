@@ -36,7 +36,7 @@ public class StudentController : MonoBehaviour
         return true;
     }
 
-    void StudentShot()
+    void StudentAutoShot()
     {
         if (!isFindLiveEnemy(enemyList)) return;
 

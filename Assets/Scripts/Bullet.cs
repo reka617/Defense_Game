@@ -10,6 +10,8 @@ public class Bullet : MonoBehaviour
 
     [SerializeField]
     float bulletSpeed;
+
+    Vector3 _aim;
     //target
     Transform _target = null;
 
@@ -25,14 +27,26 @@ public class Bullet : MonoBehaviour
     {
         
     }
-    public void init(EnemyController EC)
-    {
-        _target = EC.selectEnemy();   
-        _dir = (_target.position - transform.position).normalized;
+    public void init()
+    { 
+        
     }
 
-    void bulletMove(Transform target)
+    void bulletMove()
     {
+        if(Input.GetMouseButtonDown(1))
+        {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit))
+            {
+                _aim = hit.point;
+            }
+        }
+
+        _dir = (_aim - transform.position).normalized;
+
         transform.Translate(_dir * Time.deltaTime * bulletSpeed);
     }
 }

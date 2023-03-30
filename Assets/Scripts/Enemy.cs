@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Analytics;
 
 public class Enemy : MonoBehaviour
 {
 
-    Transform _unitBox;
+    Transform _student;
     EnemyController _EC;
     SpriteRenderer _render;
 
@@ -19,11 +20,13 @@ public class Enemy : MonoBehaviour
     public bool isDie = false;
     bool isHitted = false;
 
+    public int _enemyCount;
+
     float _colorTimer = 0f;
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
@@ -32,15 +35,15 @@ public class Enemy : MonoBehaviour
         
     }
 
-    public void init(EnemyController EC, Transform unitBox)
+    public void init(EnemyController EC, Transform student)
     {
         isDie = false;
-        _unitBox = unitBox;
+        _student = student;
         _EC = EC;
         _enemySpeed = 1;
         _enemyHP = 20;
         gameObject.SetActive(true);
-        Vector3 ranPos = _unitBox.position + new Vector3(Random.Range(10f, 60f), 0, Random.Range(-15f, 15f));
+        Vector3 ranPos = student.position + new Vector3(Random.Range(10f, 60f), 0, Random.Range(-15f, 15f));
         transform.position = ranPos;
         Debug.Log("Àû »ý¼º");
     }
@@ -87,9 +90,18 @@ public class Enemy : MonoBehaviour
         isHitted = true;
         if (_enemyHP <= 0)
         {
-            isDie = true;
+            IsDie();
         }
     }
+
+    void IsDie()
+    {
+        isDie = true;
+        gameObject.SetActive(false);
+    }
+
+   
+    
 
     //IEnumerator Roaming()
     //{

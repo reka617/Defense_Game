@@ -9,8 +9,11 @@ public class EnemyController : MonoBehaviour
     Transform _studentPosition;
 
     GameObject _enemy;
-
+    Enemy _E;
     List<Enemy> enemies = new List<Enemy>();
+
+    public int enemyCount;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +25,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        getReMainEnemy(_E);
     }
 
     public void makeEnemy()
@@ -37,6 +40,7 @@ public class EnemyController : MonoBehaviour
         foreach (Enemy enemy in enemies)
         {
             enemy.init(this, _studentPosition);
+            enemyCount++;
         }
     }
 
@@ -74,5 +78,12 @@ public class EnemyController : MonoBehaviour
         }
         return target;
     }
+
+    void getReMainEnemy(Enemy E)
+    {
+        _E = E;
+        enemyCount -= _E._enemyCount;
+    }
+
 
 }
