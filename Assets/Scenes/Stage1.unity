@@ -943,7 +943,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &452513569
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1593,7 +1593,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _studentPosition: {fileID: 1323646525}
-  EnemyCount: 0
+  enemyCount: 0
 --- !u!4 &722846943
 Transform:
   m_ObjectHideFlags: 0
@@ -3782,7 +3782,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1852227339}
         m_TargetAssemblyTypeName: SceneManagement, Assembly-CSharp
-        m_MethodName: GotoStageScene
+        m_MethodName: GotoStageSelectScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4108,6 +4108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ea7042fd4a5e64e8c30c9f053ec4d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stageUI: {fileID: 1466566537}
   _stageClear: {fileID: 452513568}
   _stageFail: {fileID: 2092585157}
   _EC: {fileID: 722846942}
@@ -4518,7 +4519,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2092585158
 RectTransform:
   m_ObjectHideFlags: 0

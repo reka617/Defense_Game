@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class StageManager : MonoBehaviour
 {
+    [SerializeField] GameObject _stageUI;
     [SerializeField] GameObject _stageClear;
     [SerializeField] GameObject _stageFail;
     [SerializeField] EnemyController _EC;
@@ -20,14 +21,16 @@ public class StageManager : MonoBehaviour
     }
     void StageClear()
     {
-        if(_EC.EnemyCount == 0)
+        if (_EC.enemyCount == 0)        
         {
+            _stageUI.SetActive(true);
             _stageClear.SetActive(true);
         }
     }
 
     void StageFail()
     {
+        _stageUI.SetActive(true);
         _stageFail.SetActive(true);
     }
 }
