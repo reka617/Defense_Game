@@ -4,10 +4,11 @@ using System.ComponentModel;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Analytics;
+using Utils;
 
 public class Enemy : MonoBehaviour
 {
-
+    
     Transform _student;
     EnemyController _EC;
     SpriteRenderer _render;
@@ -32,7 +33,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+      
     }
 
     public void init(EnemyController EC, Transform student)
@@ -94,14 +95,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void IsDie()
+    public void IsDie()
     {
         isDie = true;
         gameObject.SetActive(false);
-    }
 
-   
-    
+    }
 
     //IEnumerator Roaming()
     //{
@@ -112,4 +111,45 @@ public class Enemy : MonoBehaviour
     //    }
         
     //}
+}
+
+public class IdleEnemy : State
+{
+    public override void OnEnter()
+    {
+        
+    }
+}
+
+public class AttackEnemy : State
+{
+    public override void OnEnter()
+    {
+        
+    }
+}
+
+public class DIeEnemy : State
+{
+    public override void OnEnter()
+    {
+        
+    }
+}
+
+public enum EnemyStat
+{
+    None,
+    Damage,
+    Hp,
+    Enemy,
+    Max
+}
+
+public enum EnemyType
+{
+    None,
+    Normal,
+    Elite,
+    Max
 }

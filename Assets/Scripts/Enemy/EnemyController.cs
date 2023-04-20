@@ -25,7 +25,11 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        getReMainEnemy(_E);
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            checkDie();
+            checkEnemyCount();
+        }
     }
 
     public void makeEnemy()
@@ -35,12 +39,13 @@ public class EnemyController : MonoBehaviour
         {
             GameObject enemy = Instantiate(_enemy, transform);
             enemies.Add(enemy.GetComponent<Enemy>());
+            enemyCount++;
         }
 
         foreach (Enemy enemy in enemies)
         {
             enemy.init(this, _studentPosition);
-            enemyCount++;
+            enemy._enemyCount = enemyCount;
         }
     }
 
@@ -79,11 +84,31 @@ public class EnemyController : MonoBehaviour
         return target;
     }
 
-    void getReMainEnemy(Enemy E)
+    void checkEnemyCount()
     {
-        _E = E;
-        enemyCount -= _E._enemyCount;
+        int count = 0;
+        foreach (Enemy enemy in enemies)
+        {
+            if (enemy.isDie == false)
+            {
+                count++;
+            }
+        }
+        enemyCount = count;
     }
+
+    void checkDie()
+    {
+        foreach(Enemy enemy in enemies)
+        {
+            if(enemy.isDie == false)
+            {
+                enemy.IsDie();
+                break;
+            }
+        }
+    }
+
 
 
 }
