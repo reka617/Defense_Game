@@ -20,10 +20,10 @@ public class StageManager : MonoBehaviour
     }
     void StageClear()
     {
-        if(_EC.EnemyCount == 0)
-        {
-            _stageClear.SetActive(true);
-        }
+        //if(_EC.EnemyCount == 0)
+        //{
+        //    _stageClear.SetActive(true);
+        //}
     }
 
     void StageFail()
