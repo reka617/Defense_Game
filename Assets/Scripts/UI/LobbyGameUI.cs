@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -7,10 +9,13 @@ using UnityEngine.SceneManagement;
 public class LobbyGameUI : MonoBehaviour
 {
     [SerializeField] GameObject CafePanel;
+    [SerializeField] TextMeshPro _textTime;
+    float _accTime;
+
 
     public void Update()
     {
-        CloseCafePanel();
+
     }
     public void OnButtonOpenCafePanel()
     {
@@ -19,8 +24,11 @@ public class LobbyGameUI : MonoBehaviour
 
     public void CloseCafePanel()
     {
-        
+        CafePanel.SetActive(false); 
     }
+
+
+   
 
 
 }

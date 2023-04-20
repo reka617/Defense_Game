@@ -99,17 +99,8 @@ public class Enemy : MonoBehaviour
     {
         isDie = true;
         gameObject.SetActive(false);
-        _enemyCount--;
-    }
 
-    public void getEnemyCount(EnemyController EC)
-    {
-        _EC = EC;
-        _enemyCount = _EC.enemyCount;
     }
-
-   
-    
 
     //IEnumerator Roaming()
     //{
