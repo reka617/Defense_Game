@@ -886,7 +886,7 @@ GameObject:
   - component: {fileID: 613590879}
   - component: {fileID: 613590878}
   m_Layer: 0
-  m_Name: StudentList
+  m_Name: StudentRecord
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -957,9 +957,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1231948943}
-        m_TargetAssemblyTypeName: LobbyGameUI, Assembly-CSharp
-        m_MethodName: OnButtonGotoCharacterScene
+      - m_Target: {fileID: 1231948945}
+        m_TargetAssemblyTypeName: SceneManagement, Assembly-CSharp
+        m_MethodName: GoToStudentRecord
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2805,9 +2805,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1231948943}
-        m_TargetAssemblyTypeName: LobbyGameUI, Assembly-CSharp
-        m_MethodName: OnButtonGotoShopScene
+      - m_Target: {fileID: 1231948945}
+        m_TargetAssemblyTypeName: SceneManagement, Assembly-CSharp
+        m_MethodName: GoToShop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3644,7 +3644,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD559\uC0DD"
+  m_text: "\uD559\uC0DD\uBD80"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c6aed5b2c6d129741acdf3e3084b2f6f, type: 2}
   m_sharedMaterial: {fileID: 2331283172445080190, guid: c6aed5b2c6d129741acdf3e3084b2f6f, type: 2}

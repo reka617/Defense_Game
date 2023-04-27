@@ -35,5 +35,16 @@ public class SceneManagement : MonoBehaviour
         SceneManager.LoadScene("Lobby");
     }
 
-    
+    public void GoToStudentRecord()
+    {
+        SceneManager.LoadScene("StudentRecord");
+        
+    }
+
+    public void GoToShop()
+    {
+        SceneManager.LoadScene("Shop");
+
+    }
+
 }
