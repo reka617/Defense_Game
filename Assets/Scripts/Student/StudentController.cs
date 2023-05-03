@@ -9,17 +9,6 @@ public class StudentController : MonoBehaviour
 
     List<Enemy> enemyList = new List<Enemy>();
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     bool isFindLiveEnemy(List<Enemy> enemies)
     {

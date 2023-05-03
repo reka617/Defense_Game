@@ -8,67 +8,19 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     Transform _studentPosition;
 
-    GameObject _enemy;
-    Enemy _E;
+    int enemyCount;
+
     List<Enemy> enemies = new List<Enemy>();
 
-    public int enemyCount;
-    
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //_enemy = Resources.Load("Prefabs/Enemy") as GameObject;
-        //makeEnemy();
-    }
 
     // Update is called once per frame
     void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.Q))
-        //{
-        //    checkDie();
-        //    checkEnemyCount();
-        //}
+
     }
 
-    //public void makeEnemy()
-    //{
-
-    //    for (int i = 0; i < 5; i++)
-    //    {
-    //        GameObject enemy = Instantiate(_enemy, transform);
-    //        enemies.Add(enemy.GetComponent<Enemy>());
-    //        enemyCount++;
-    //    }
-
-    //    foreach (Enemy enemy in enemies)
-    //    {
-    //        enemy.init(this, _studentPosition);
-    //        enemy._enemyCount = enemyCount;
-    //    }
-    //}
-
-    //public void newMakeEnemy()
-    //{
-    //    bool isNew = true;
-    //    foreach (Enemy _enemy in enemies)
-    //    {
-    //        if (_enemy.gameObject.activeSelf == false)
-    //        {
-    //            _enemy.init(this, _studentPosition);
-    //            isNew = false;
-    //            break;
-    //        }
-    //    }
-    //    if (isNew)
-    //    {
-    //        GameObject enemy = Instantiate(_enemy);
-    //        enemy.GetComponent<Enemy>().init(this, _studentPosition);
-    //        enemies.Add(enemy.GetComponent<Enemy>());
-    //    }
-    //}
-
+    //가장 가까운 위치에 있는 적을 찾는 함수
     public Transform selectEnemy()
     {
         float distance = 60f;
@@ -83,30 +35,10 @@ public class EnemyController : MonoBehaviour
         }
         return target;
     }
-
+    // 몬스터가 다 죽었는지 확인하기 위한 함수
     void checkEnemyCount()
     {
-        int count = 0;
-        foreach (Enemy enemy in enemies)
-        {
-            if (enemy.isDie == false)
-            {
-                count++;
-            }
-        }
-        enemyCount = count;
-    }
-
-    void checkDie()
-    {
-        foreach(Enemy enemy in enemies)
-        {
-            if(enemy.isDie == false)
-            {
-                enemy.IsDie();
-                break;
-            }
-        }
+       
     }
 
 

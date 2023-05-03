@@ -6,7 +6,18 @@ using UnityEngine;
 public class PoolManager : MonoBehaviour
 {
     Dictionary<string, Pool> _pool = new Dictionary<string, Pool>();
+
+    int _summonCount = 5;
+    public int SummonCount { get { return _summonCount; } } // 스테이지 클리어 여부를 확인하기 위한 속성, 소환 횟수와 죽었을 때 카운트와 비교하기 위해서 
+   
+    
     Transform _root;
+
+    public void temp()
+    {
+        //스테이지별 소환 횟수 입력받아서 소환활 수 있도록 _summonCount에 넣어줌
+    }
+
 
     public void Init()
     {
@@ -17,7 +28,7 @@ public class PoolManager : MonoBehaviour
         }
     }
 
-    public void CreatePool(GameObject original, int count = 5)
+    public void CreatePool(GameObject original, int count= 5)
     {
         Pool pool = new Pool();
         pool.Init(original, count);
@@ -67,7 +78,7 @@ class Pool
     public GameObject Original { get; private set; }
     public Transform Root { get; set; }
 
-    Stack<Poolable> _poolStack = new Stack<Poolable>();
+    public Stack<Poolable> _poolStack = new Stack<Poolable>();
 
     public void Init(GameObject original, int count)
     {

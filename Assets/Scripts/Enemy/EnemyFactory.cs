@@ -4,15 +4,67 @@ using UnityEngine;
 
 public class EnemyFactory : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    List<EnemyFactoryBase> eFactories = new List<EnemyFactoryBase>();
+    public int killCount;
+    void Init()
     {
-        
+        if (eFactories.Count > 0) return;
+        eFactories.Add(new SniperEnemyFactory());
+        eFactories.Add(new CannonEnemyFactory());
+        eFactories.Add(new ThreeShotEnemyFactory());
+        eFactories.Add(new EliteEnemyFactory());
     }
 
-    // Update is called once per frame
-    void Update()
+    public EnemyBase SummonMonster()
     {
-        
+        Init();
+        int i = Random.Range(0, eFactories.Count - 2);
+        return eFactories[i].MakeEnemy();
+    }
+}
+
+public abstract class EnemyFactoryBase
+{
+
+    public abstract EnemyBase MakeEnemy();
+}
+
+public class SniperEnemyFactory : EnemyFactoryBase
+{
+    public override EnemyBase MakeEnemy()
+    {
+        EnemyBase mon = new SniperEnemy();
+        mon.Init();
+        return mon;
+    }
+}
+
+public class CannonEnemyFactory : EnemyFactoryBase
+{
+    public override EnemyBase MakeEnemy()
+    {
+        EnemyBase mon = new CannonEnemy();
+        mon.Init();
+        return mon;
+    }
+}
+
+public class ThreeShotEnemyFactory : EnemyFactoryBase
+{
+    public override EnemyBase MakeEnemy()
+    {
+        EnemyBase mon = new ThreeShotEnemy();
+        mon.Init();
+        return mon;
+    }
+}
+
+public class EliteEnemyFactory : EnemyFactoryBase
+{
+    public override EnemyBase MakeEnemy()
+    {
+        EnemyBase mon = new EliteEnemy();
+        mon.Init();
+        return mon;
     }
 }

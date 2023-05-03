@@ -12,11 +12,6 @@ public class LobbyGameUI : MonoBehaviour
     [SerializeField] TextMeshPro _textTime;
     float _accTime;
 
-
-    public void Update()
-    {
-
-    }
     public void OnButtonOpenCafePanel()
     {
         CafePanel.SetActive(true);

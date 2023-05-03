@@ -1,26 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class Define : MonoBehaviour
+namespace Define 
 {
     public class Student
     {
-        int id;
-        int hp;
-        float power;
-        int projectileCount;
-        string prefabPath;
-        string imageUrl;
+        public int id;
+        public float hp;
+        public float power;
+        public int projectileCount;
+        public string prefabPath;
+        public string imageUrl;
     }
     public class Enemy
     {
-        int id;
-        int hp;
-        float power;
-        int projectileCount;
-        string prefabPath;
-        string imageUrl;
+        public int id;
+        public float hp;
+        public float power;
+        public int projectileCount;
+        public string prefabPath;
+        public string imageUrl;
     }
    public enum Scene
     {
