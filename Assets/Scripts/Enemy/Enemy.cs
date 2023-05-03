@@ -8,8 +8,8 @@ using Utils;
 
 public class Enemy : MonoBehaviour
 {
-    
-    Transform _studentPosition;
+    // 몬스터의 종류는 다 투사체형이며 포물선으로 탄 쏘는형, 레이저 쏘는 형, 3연발 쏘는 형 3가지로 구현
+    Transform _student;
     EnemyController _EC;
     SpriteRenderer _render;
 
