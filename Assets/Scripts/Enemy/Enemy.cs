@@ -9,9 +9,13 @@ using Utils;
 public class Enemy : MonoBehaviour
 {
     
-    Transform _student;
+    Transform _studentPosition;
     EnemyController _EC;
     SpriteRenderer _render;
+
+
+    EnemyBase _EB;
+    EnemyState _state;
 
     Vector3 posGoal;
 
@@ -24,40 +28,39 @@ public class Enemy : MonoBehaviour
     public int _enemyCount;
 
     float _colorTimer = 0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-    }
+
+    public 
+
 
     // Update is called once per frame
     void Update()
     {
-      
+        if (_state == null)
+        {
+            _state = new MoveState();
+            _state.OnEnter(this);
+        }
+        if (_state != null) _state.MainLoop();
+        Debug.Log("현재 상태 :" + _state);
     }
 
-    public void init(EnemyController EC, Transform student)
+    public void init(EnemyBase EB, Transform student)
     {
-        isDie = false;
-        _student = student;
-        _EC = EC;
-        _enemySpeed = 1;
-        _enemyHP = 20;
+        _studentPosition = student;
+        _EB = EB;
         gameObject.SetActive(true);
         Vector3 ranPos = student.position + new Vector3(Random.Range(10f, 60f), 0, Random.Range(-15f, 15f));
         transform.position = ranPos;
         Debug.Log("적 생성");
     }
 
-    /*void Live()
+    public void ChangeUnitState(EnemyState state)
     {
-        isDie = false;
+        _state = state;
+        if (_state != null) _state.OnEnter(this);
     }
 
-    void Move()
-    {
-    
-    }*/
+
 
     void ChangeHitColor()
     {
@@ -87,12 +90,7 @@ public class Enemy : MonoBehaviour
 
     void onHitted(int hitPower)
     {
-        _enemyHP -= hitPower;
-        isHitted = true;
-        if (_enemyHP <= 0)
-        {
-            IsDie();
-        }
+       
     }
 
     public void IsDie()

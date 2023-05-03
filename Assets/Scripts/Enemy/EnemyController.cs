@@ -18,56 +18,56 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _enemy = Resources.Load("Prefabs/Enemy") as GameObject;
-        makeEnemy();
+        //_enemy = Resources.Load("Prefabs/Enemy") as GameObject;
+        //makeEnemy();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            checkDie();
-            checkEnemyCount();
-        }
+        //if(Input.GetKeyDown(KeyCode.Q))
+        //{
+        //    checkDie();
+        //    checkEnemyCount();
+        //}
     }
 
-    public void makeEnemy()
-    {
+    //public void makeEnemy()
+    //{
 
-        for (int i = 0; i < 5; i++)
-        {
-            GameObject enemy = Instantiate(_enemy, transform);
-            enemies.Add(enemy.GetComponent<Enemy>());
-            enemyCount++;
-        }
+    //    for (int i = 0; i < 5; i++)
+    //    {
+    //        GameObject enemy = Instantiate(_enemy, transform);
+    //        enemies.Add(enemy.GetComponent<Enemy>());
+    //        enemyCount++;
+    //    }
 
-        foreach (Enemy enemy in enemies)
-        {
-            enemy.init(this, _studentPosition);
-            enemy._enemyCount = enemyCount;
-        }
-    }
+    //    foreach (Enemy enemy in enemies)
+    //    {
+    //        enemy.init(this, _studentPosition);
+    //        enemy._enemyCount = enemyCount;
+    //    }
+    //}
 
-    public void newMakeEnemy()
-    {
-        bool isNew = true;
-        foreach (Enemy _enemy in enemies)
-        {
-            if (_enemy.gameObject.activeSelf == false)
-            {
-                _enemy.init(this, _studentPosition);
-                isNew = false;
-                break;
-            }
-        }
-        if (isNew)
-        {
-            GameObject enemy = Instantiate(_enemy);
-            enemy.GetComponent<Enemy>().init(this, _studentPosition);
-            enemies.Add(enemy.GetComponent<Enemy>());
-        }
-    }
+    //public void newMakeEnemy()
+    //{
+    //    bool isNew = true;
+    //    foreach (Enemy _enemy in enemies)
+    //    {
+    //        if (_enemy.gameObject.activeSelf == false)
+    //        {
+    //            _enemy.init(this, _studentPosition);
+    //            isNew = false;
+    //            break;
+    //        }
+    //    }
+    //    if (isNew)
+    //    {
+    //        GameObject enemy = Instantiate(_enemy);
+    //        enemy.GetComponent<Enemy>().init(this, _studentPosition);
+    //        enemies.Add(enemy.GetComponent<Enemy>());
+    //    }
+    //}
 
     public Transform selectEnemy()
     {
