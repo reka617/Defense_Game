@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class EnemyBase
@@ -23,7 +20,7 @@ public class SniperEnemy : EnemyBase
         _eType = Define.EnemyType.SniperEnemy;
         _obj = Managers.Resource.Instantiate("SniperEnemy");
         _obj.GetComponent<Enemy>().init(this);
-        _obj.transform.position = new Vector3(0, 0.5f, 0); // 몬스터 리젠 위치 지정(오른쪽이나 왼쪽으로 생성)
+        _obj.transform.position = new Vector3(Random.Range(-10f, 10f), 20f, Random.Range(10f, 60f));
     }
 }
 
@@ -35,7 +32,7 @@ public class CannonEnemy : EnemyBase
         _eType = Define.EnemyType.SniperEnemy;
         _obj = Managers.Resource.Instantiate("CannonEnemy");
         _obj.GetComponent<Enemy>().init(this);
-        _obj.transform.position = new Vector3(0, 0.5f, 0); // 몬스터 리젠 위치 지정(오른쪽이나 왼쪽으로 생성)
+        _obj.transform.position = new Vector3(Random.Range(-10f, 10f), 20f, Random.Range(10f,60f)); 
     }
 }
 
@@ -47,7 +44,7 @@ public class ThreeShotEnemy : EnemyBase
         _eType = Define.EnemyType.SniperEnemy;
         _obj = Managers.Resource.Instantiate("ThreeShotEnemy");
         _obj.GetComponent<Enemy>().init(this);
-        _obj.transform.position = new Vector3(0, 0.5f, 0); // 몬스터 리젠 위치 지정(오른쪽이나 왼쪽으로 생성)
+        _obj.transform.position = new Vector3(Random.Range(-10f, 10f), 20f, Random.Range(10f, 60f));
     }
 }
 
@@ -59,6 +56,6 @@ public class EliteEnemy : EnemyBase
         _eType = Define.EnemyType.SniperEnemy;
         _obj = Managers.Resource.Instantiate("EliteEnemy");
         _obj.GetComponent<Enemy>().init(this);
-        _obj.transform.position = new Vector3(0, 0.5f, 0); // 몬스터 리젠 위치 지정(오른쪽이나 왼쪽으로 생성)
+        _obj.transform.position = new Vector3(Random.Range(-10f, 10f), 20f, Random.Range(10f, 60f));
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyFactory : MonoBehaviour
 {
     List<EnemyFactoryBase> eFactories = new List<EnemyFactoryBase>();
-    public int killCount;
     void Init()
     {
         if (eFactories.Count > 0) return;
@@ -18,7 +17,7 @@ public class EnemyFactory : MonoBehaviour
     public EnemyBase SummonMonster()
     {
         Init();
-        int i = Random.Range(0, eFactories.Count - 2);
+        int i = Random.Range(0, eFactories.Count - 1);
         return eFactories[i].MakeEnemy();
     }
 }
