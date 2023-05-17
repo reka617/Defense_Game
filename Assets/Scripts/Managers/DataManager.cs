@@ -11,8 +11,8 @@ public class DataManager
     private Dictionary<Define.EnemyType, Define.Enemy> _enemyDict;
     public void Init()
     {
-        _studentDict = ReadJson.LoadJsonDict<Define.StudentType, Define.Student>("Data/StudentData");
-        _enemyDict = ReadJson.LoadJsonDict<Define.EnemyType, Define.Enemy>("Data/EnemyData");
+        //_studentDict = ReadJson.LoadJsonDict<Define.StudentType, Define.Student>("Data/StudentData");
+        //_enemyDict = ReadJson.LoadJsonDict<Define.EnemyType, Define.Enemy>("Data/EnemyData");
     }
 
     public Define.Student GetStudentInfo(Define.StudentType studentType)

@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 8042019210716874197}
   - component: {fileID: 3502161537503283802}
   - component: {fileID: -5801461503512047056}
+  - component: {fileID: -3736744986074857176}
+  - component: {fileID: -7919181866510952471}
   m_Layer: 0
   m_Name: CannonEnemy
   m_TagString: Untagged
@@ -111,4 +113,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54433056a9c874b41a1783f50d51461e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsUsing: 0
+--- !u!114 &-3736744986074857176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048930862580447631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16c6c2c0fea17e64dac0992e83b336cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDie: 0
+  _enemyCount: 0
+--- !u!54 &-7919181866510952471
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048930862580447631}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

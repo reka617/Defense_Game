@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     Transform _studentPosition;
 
+   
     int enemyCount;
 
     List<Enemy> enemies = new List<Enemy>();
