@@ -30,6 +30,21 @@ namespace Utils
             return JsonConvert.DeserializeObject<Dictionary<T, T2>>(textAsset.text);
         }
     }
+
+    public class GenericSingleton<T> where T : MonoBehaviour
+    {
+        private static T _instance;
+        public static T getInstance()
+        {
+            if (_instance == null)
+            {
+                GameObject temp = new GameObject();
+                _instance = temp.AddComponent<T>();
+                Object.DontDestroyOnLoad(temp);
+            }
+            return _instance;
+        }
+    }
 }
 
-    
+

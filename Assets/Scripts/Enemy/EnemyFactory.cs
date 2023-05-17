@@ -14,7 +14,7 @@ public class EnemyFactory : MonoBehaviour
         eFactories.Add(new EliteEnemyFactory());
     }
 
-    public EnemyBase SummonMonster()
+    public EnemyBase SummonEnemy()
     {
         Init();
         int i = Random.Range(0, eFactories.Count - 1);

@@ -1,7 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
 using UnityEngine;
+using Utils;
 
 public class EnemyController : MonoBehaviour
 {
@@ -17,7 +16,10 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            GenericSingleton<EnemyFactory>.getInstance().SummonEnemy();
+        }
     }
 
     //가장 가까운 위치에 있는 적을 찾는 함수

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyPool : MonoBehaviour
 {
+    EnemyFactory ef;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,15 @@ public class EnemyPool : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.Q))
+        {
+            summon(ef);
+        }
         
+    }
+
+    void summon(EnemyFactory ef)
+    {
+        ef.SummonEnemy();
     }
 }
