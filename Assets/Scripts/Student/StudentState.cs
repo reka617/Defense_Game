@@ -52,5 +52,15 @@ namespace SState
     public class AttackState : StudentState
     {
 
+
+        public override void OnEnter(Student student)
+        {
+            base.OnEnter(student);
+        }
+
+        public override void MainLoop()
+        {
+            
+        }
     }
 }

@@ -14,6 +14,7 @@ public class Cafe : MonoBehaviour
     //누적될 수 있는 최대 재화량은 레벨에 따라 정해지고 최대가 됬을 경우 재화는 더 이상 오르지 않음 
 
 
+ 
     public void ClickTakeButton()
     {
         //재화 받은거 창고에 저장
@@ -21,7 +22,7 @@ public class Cafe : MonoBehaviour
         //시간 다시 체크 
         AddAccountExp();
         AddUseItem();
-        _OnButtonTime = DateTime.Now; // 보상받은 시간을 체크
+        _OnButtonTime = DateTime.Now; // 보상받은 시간을 체크 //파일로 저장
     }
 
     void AddAccountExp()
