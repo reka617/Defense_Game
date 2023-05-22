@@ -8,6 +8,7 @@ public abstract class EnemyBase
 
     public Define.EnemyType getEnemyType { get { return _eType; } }
     public Define.Enemy getEnemyStat { get { return _eStat; } }
+    public Vector3 getEnemyPosition { get { return _obj.transform.position; } }
 
     public abstract void Init();
 }

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -17,7 +16,7 @@ public class EnemyFactory : MonoBehaviour
     public EnemyBase SummonEnemy()
     {
         Init();
-        int i = Random.Range(0, eFactories.Count - 2);
+        int i = Random.Range(0, eFactories.Count - 1);
         return eFactories[i].MakeEnemy();
     }
 }

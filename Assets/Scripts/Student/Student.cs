@@ -5,7 +5,7 @@ using SState;
 public class Student : MonoBehaviour
 {
     StudentState _state;
-    StudentBase _SB;
+   
     void Update()
     {
         if (_state == null)
@@ -17,9 +17,9 @@ public class Student : MonoBehaviour
         Debug.Log("현재 상태 :" + _state);
     }
 
-    public void init(StudentBase SB)
+    public void init()
     {
-        _SB = SB;
+        transform.position = new Vector3(0, 1, -1); 
     }
 
     public void ChangeUnitState(StudentState state)

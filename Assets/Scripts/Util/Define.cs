@@ -45,4 +45,11 @@ namespace Define
         SniperRifle,
         MachineGun
     }
+
+    public enum EnemyBulletType
+    {
+        Laser,
+        Parabola,
+        ThreeShot,
+    }
 }

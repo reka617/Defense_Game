@@ -1,5 +1,6 @@
 using UnityEngine;
 using EState;
+using Define;
 
 public class Enemy : MonoBehaviour
 {
@@ -17,12 +18,14 @@ public class Enemy : MonoBehaviour
     public float BulletDamage { get { return _bulletDamage; } }
     public Define.Enemy EnemyStat { get { return _EB.getEnemyStat; } }
 
+    public EnemyBase sendEnemyBase { get { return _EB; } } 
+
     // Update is called once per frame
     void Update()
     {
         if (_state == null)
         {
-            _state = new MoveState();
+            _state = new RespawnState();
             _state.OnEnter(this);
         }
         if (_state != null) _state.MainLoop();
@@ -45,11 +48,17 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //총알과의 충돌처리 여기서 다 함 (종류 4가지, 레이저(엘리트), 포, 저격, 3연발) 레이저는 오브젝트의 라이프타임으로 사라짐을 조절
-        if (collision.gameObject.name == "Bullet")
+        if (collision.gameObject.tag == "Bullet")
         {
             _bulletDamage = collision.gameObject.GetComponent<BulletDamage>().getDamage();
             isHitted= true;
             //collision.gameObject.GetComponent<BulletRemove>().remove(); // 유저와 충돌했을 떄 오브젝트가 사라짐
+        }
+
+        if(collision.gameObject.tag == "Ground")
+        {
+            Debug.Log("충돌");
+            ChangeUnitState(new MoveState());
         }
     }
 }

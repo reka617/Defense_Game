@@ -1,9 +1,5 @@
 using UnityEngine;
 using EState;
-using System.Collections;
-using System.Threading;
-using System.Threading.Tasks;
-using Unity.VisualScripting;
 
 namespace EState
 {
@@ -24,6 +20,7 @@ namespace EState
 
     public class RespawnState : EnemyState
     {
+        bool _respawn = false;
         public override void OnEnter(Enemy enemy)
         {
             base.OnEnter(enemy);
@@ -31,72 +28,40 @@ namespace EState
 
         public override void MainLoop()
         {
-            _enemy.ChangeUnitState(new MoveState());
-        }
-        private void OnCollisionEnter(Collision collision)
-        {
-            //총알과의 충돌처리 여기서 다 함 (종류 4가지, 레이저(엘리트), 포, 저격, 3연발) 레이저는 오브젝트의 라이프타임으로 사라짐을 조절
-            if (collision.gameObject.tag == "Ground")
-            {
-                _enemy.ChangeUnitState(new MoveState());   
-            }
+
         }
     }
 
     public class MoveState : EnemyState
     {
         bool _isHitted = false;
-        Vector3 _respawnPosition;
         Vector3 _nowPosition;
-        Vector3 _leftMaxPosition;
-        Vector3 _rightMaxPosition;
+        float moveMax = 2.0f;
+        float moveSpeed = 3.0f;
+
         public override void OnEnter(Enemy enemy)
         {
             base.OnEnter(enemy);
+            _nowPosition = _enemy.transform.position;
         }
 
         public override void MainLoop()
         {
-            int sec = 0;
-            _isHitted = _enemy.isHitted;
-            // 소환된 위치에서 지정된 포지션으로 이동 //좌우로 이동을 위해서 x좌표로 패트롤
-            _respawnPosition = _enemy.transform.position;
-            _respawnPosition.y = 0;
-            _nowPosition = _enemy.transform.position;
-            _nowPosition.y = 0;
-            _leftMaxPosition = _respawnPosition + (Vector3.left * 3);
-            _rightMaxPosition = _respawnPosition + (Vector3.right * 3);
 
-            if (_nowPosition.x > _leftMaxPosition.x && _nowPosition.x < _rightMaxPosition.x)
-            {
-                while (sec < 3) //맥스포지션을 벗어나면 루프문 탈출
-                {
-                    if (_enemy.transform.position.x < _leftMaxPosition.x) break;
-                    _enemy.transform.Translate(Vector3.left);
-                    sec++;
-                }
-                sec = 0;
-            }
-            else if (_nowPosition.x <= _leftMaxPosition.x)
-            {
-                while (sec < 6)
-                {
-                    if (_enemy.transform.position.x > _rightMaxPosition.x) break;
-                    _enemy.transform.Translate(Vector3.right);
-                    sec++;
-                }
-                sec = 0;
-            }
-            else if (_nowPosition.x >= _rightMaxPosition.x)
-            {
-                while (sec < 6)
-                {
-                    if (_enemy.transform.position.x > _rightMaxPosition.x) break;
-                    _enemy.transform.Translate(Vector3.right);
-                    sec++;
-                }
-                sec = 0;
-            }
+            _isHitted = _enemy.isHitted;
+            // 소환된 위치에서 지정된 포지션으로 이동 //좌우로 이동을 위해서 x좌표로 패트롤// 적 패트롤 구현
+            //Vector3 v = _nowPosition;
+            //v.x = _nowPosition.x + (moveMax * Mathf.Sin(Time.time * moveSpeed));
+            //_enemy.transform.position = v;
+            //if(_enemy.transform.position.x >= _nowPosition.x + moveMax)
+            //{
+            //    _enemy.ChangeUnitState(new AttackState());
+            //}
+            //else if(_enemy.transform.position.x <= _nowPosition.x + -moveMax)
+            //{
+            //    _enemy.ChangeUnitState(new AttackState());
+            //}
+
             //맞았을 떄 맞은상태로 전환 그러나 맞았다고해서 이동을 안하지는 않음, 이동을 끝까지하고 상태전환
             if (_isHitted == true)
             {
@@ -105,13 +70,10 @@ namespace EState
                 }
             }
         }
-
-
-
-
         // 지정된 포지션은 빈 게임오브젝트를 생성해서 넣어놓는거로
 
     }
+}
 
 
     public class HittedEnemyState : EnemyState
@@ -137,7 +99,7 @@ namespace EState
                 _enemy.ChangeUnitState(new DieState());
             }
             ChangeHitColor();
-            _enemy.ChangeUnitState(new AttackState());
+            _enemy.ChangeUnitState(new MoveState());
         }
         void ChangeHitColor()
         {
@@ -164,23 +126,24 @@ namespace EState
 
         public override void MainLoop()
         {
-            //유저한테 공격을 하되, 3개의 포지션을 랜덤으로 결정하여 공격을 가함
+            Debug.Log("공격");
+            _enemy.ChangeUnitState(new MoveState());
         }
     }
 
-    public class DieState : EnemyState
+public class DieState : EnemyState
+{
+    public override void OnEnter(Enemy enemy)
     {
-        public override void OnEnter(Enemy enemy)
-        {
-            base.OnEnter(enemy);
-        }
-        public override void MainLoop()
-        {
-            //죽는 애니메이션 실행
-            Managers.Resource.Destroy(_enemy.gameObject);
-            _enemy._enemyCount++;
-        }
+        base.OnEnter(enemy);
+    }
+    public override void MainLoop()
+    {
+        //죽는 애니메이션 실행
+        Managers.Resource.Destroy(_enemy.gameObject);
+        _enemy._enemyCount++;
     }
 }
+
 
 

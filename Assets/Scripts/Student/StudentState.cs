@@ -63,4 +63,17 @@ namespace SState
             
         }
     }
+
+    public class ShieldState : StudentState // 에너지방벽으로 실드상태
+    {
+        public override void OnEnter(Student student)
+        {
+            base.OnEnter(student);
+        }
+
+        public override void MainLoop()
+        {
+            base.MainLoop();
+        }
+    }
 }

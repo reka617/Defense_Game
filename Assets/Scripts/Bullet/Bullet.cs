@@ -1,4 +1,5 @@
 using UnityEngine;
+using Utils;
 
 public class Bullet : MonoBehaviour
 {
@@ -18,18 +19,9 @@ public class Bullet : MonoBehaviour
         _BB = BB;
     }
 
-
-
-    void getAimPosition(BulletController BC)
-    {
-        _BC = BC;
-        _mouseAim = _BC.Aim;
-    }
-
     void bulletMove()
     {
-        _dir = (_mouseAim - transform.position).normalized;
-
+        _dir = ( - transform.position).normalized;
         transform.Translate(_dir * Time.deltaTime * bulletSpeed);
     }
 }
