@@ -1,5 +1,7 @@
 using UnityEngine;
 using EState;
+using UnityEngine.UIElements;
+using Define;
 
 namespace EState
 {
@@ -35,32 +37,76 @@ namespace EState
     public class MoveState : EnemyState
     {
         bool _isHitted = false;
-        Vector3 _nowPosition;
+        bool isAttack = false;
+        bool isLeft = true;
+        bool isRight = false;
         float moveMax = 2.0f;
-        float moveSpeed = 3.0f;
+        float dTime = 0;
 
         public override void OnEnter(Enemy enemy)
         {
             base.OnEnter(enemy);
-            _nowPosition = _enemy.transform.position;
+            _enemy.init(this);
         }
 
         public override void MainLoop()
         {
-
             _isHitted = _enemy.isHitted;
             // 소환된 위치에서 지정된 포지션으로 이동 //좌우로 이동을 위해서 x좌표로 패트롤// 적 패트롤 구현
-            //Vector3 v = _nowPosition;
-            //v.x = _nowPosition.x + (moveMax * Mathf.Sin(Time.time * moveSpeed));
-            //_enemy.transform.position = v;
-            //if(_enemy.transform.position.x >= _nowPosition.x + moveMax)
-            //{
-            //    _enemy.ChangeUnitState(new AttackState());
-            //}
-            //else if(_enemy.transform.position.x <= _nowPosition.x + -moveMax)
-            //{
-            //    _enemy.ChangeUnitState(new AttackState());
-            //}
+            Vector3 v = _enemy.InitPosition;
+            if (_enemy.transform.position.x > v.x + moveMax)
+            {
+                if (!isAttack)
+                {
+                    isAttack = true;
+                    _enemy.ChangeUnitState(new AttackState());
+                    _enemy.transform.Translate(Vector3.zero * Time.deltaTime);
+                }
+                else if (isAttack)
+                {
+                    isRight = false;
+                    isLeft = true;
+                    dTime += Time.deltaTime;
+                    if (dTime > 5)
+                    {
+                        _enemy.transform.Translate(Vector3.left * Time.deltaTime);
+                        isAttack = false;
+                        dTime = 0;
+                    }
+                }
+            }
+            else if (_enemy.transform.position.x < v.x - moveMax)
+            {
+                if (!isAttack)
+                {
+                    isAttack = true;
+                    _enemy.ChangeUnitState(new AttackState());
+                    _enemy.transform.Translate(Vector3.zero * Time.deltaTime);
+                }
+                else if (isAttack)
+                {
+                    isLeft = false;
+                    isRight = true;
+                    dTime += Time.deltaTime;
+                    if (dTime > 5)
+                    {
+                        _enemy.transform.Translate(Vector3.right * Time.deltaTime);
+                        isAttack = false;
+                        dTime = 0;
+                    }
+                }
+            }
+            else
+            {
+                if (isLeft && !isAttack)
+                {
+                    _enemy.transform.Translate(Vector3.left * Time.deltaTime);
+                }
+                else if(isRight && !isAttack)
+                {
+                    _enemy.transform.Translate(Vector3.right * Time.deltaTime);
+                }
+            }
 
             //맞았을 떄 맞은상태로 전환 그러나 맞았다고해서 이동을 안하지는 않음, 이동을 끝까지하고 상태전환
             if (_isHitted == true)
@@ -127,7 +173,7 @@ namespace EState
         public override void MainLoop()
         {
             Debug.Log("공격");
-            _enemy.ChangeUnitState(new MoveState());
+            _enemy.ChangeUnitState(_enemy.MoveState);
         }
     }
 

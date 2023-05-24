@@ -8,7 +8,9 @@ public class Enemy : MonoBehaviour
 
     EnemyBase _EB;
     EnemyState _state;
+    MoveState _MV;
 
+    Vector3 _initPostion;
 
     public bool isDie = false;
     public bool isHitted = false;
@@ -17,8 +19,10 @@ public class Enemy : MonoBehaviour
     float _bulletDamage;
     public float BulletDamage { get { return _bulletDamage; } }
     public Define.Enemy EnemyStat { get { return _EB.getEnemyStat; } }
+    public EnemyBase sendEnemyBase { get { return _EB; } }
+    public Vector3 InitPosition { get { return _initPostion; } }
+    public MoveState MoveState { get { return _MV; } }
 
-    public EnemyBase sendEnemyBase { get { return _EB; } } 
 
     // Update is called once per frame
     void Update()
@@ -43,6 +47,11 @@ public class Enemy : MonoBehaviour
         if (_state != null) _state.OnEnter(this);
     }
 
+    public void init(MoveState MV)
+    {
+        _MV = MV;
+    }
+
     
 
     private void OnCollisionEnter(Collision collision)
@@ -58,7 +67,10 @@ public class Enemy : MonoBehaviour
         if(collision.gameObject.tag == "Ground")
         {
             Debug.Log("Ãæµ¹");
+            _initPostion = transform.position;
             ChangeUnitState(new MoveState());
+
+
         }
     }
 }
