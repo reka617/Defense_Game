@@ -6,12 +6,11 @@ public class Bullet : MonoBehaviour
     Vector3 _mouseAim;
     Vector3 _dir;
     BulletBase _BB;
-    BulletController _BC;
-    [SerializeField] int bulletSpeed;
+    [SerializeField] float bulletSpeed;
 
     private void Update()
     {
-        bulletMove();
+
     }
 
     public void Init(BulletBase BB)
@@ -19,9 +18,11 @@ public class Bullet : MonoBehaviour
         _BB = BB;
     }
 
-    void bulletMove()
+
+    public void BulletMove(Vector3 target)
     {
-        _dir = ( - transform.position).normalized;
+        _dir = (target - transform.position).normalized;
         transform.Translate(_dir * Time.deltaTime * bulletSpeed);
     }
+
 }

@@ -5,7 +5,12 @@ using SState;
 public class Student : MonoBehaviour
 {
     StudentState _state;
-   
+
+    public Vector3 StudentPosition { get { return transform.position; } }
+    private void Start()
+    {
+        Init();
+    }
     void Update()
     {
         if (_state == null)
@@ -17,10 +22,11 @@ public class Student : MonoBehaviour
         Debug.Log("현재 상태 :" + _state);
     }
 
-    public void init()
+    public void Init()
     {
         transform.position = new Vector3(0, 1, -1); 
     }
+
 
     public void ChangeUnitState(StudentState state)
     {

@@ -168,6 +168,7 @@ GameObject:
   - component: {fileID: 8146131648680782558}
   - component: {fileID: 3957611228792744994}
   - component: {fileID: 1404853216189453773}
+  - component: {fileID: -162992293815492735}
   m_Layer: 0
   m_Name: EliteEnemy
   m_TagString: Untagged
@@ -295,6 +296,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54433056a9c874b41a1783f50d51461e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-162992293815492735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8146131648680782529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09bd937dc4b52ee4fb052f333483156f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8824503255701720322

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -5801461503512047056}
   - component: {fileID: -3736744986074857176}
   - component: {fileID: -7919181866510952471}
+  - component: {fileID: -1714712701755527623}
   m_Layer: 0
   m_Name: CannonEnemy
   m_TagString: Untagged
@@ -144,3 +145,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &-1714712701755527623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2048930862580447631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09bd937dc4b52ee4fb052f333483156f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

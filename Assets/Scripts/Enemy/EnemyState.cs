@@ -2,6 +2,7 @@ using UnityEngine;
 using EState;
 using UnityEngine.UIElements;
 using Define;
+using Utils;
 
 namespace EState
 {
@@ -22,7 +23,6 @@ namespace EState
 
     public class RespawnState : EnemyState
     {
-        bool _respawn = false;
         public override void OnEnter(Enemy enemy)
         {
             base.OnEnter(enemy);
@@ -102,7 +102,7 @@ namespace EState
                 {
                     _enemy.transform.Translate(Vector3.left * Time.deltaTime);
                 }
-                else if(isRight && !isAttack)
+                else if (isRight && !isAttack)
                 {
                     _enemy.transform.Translate(Vector3.right * Time.deltaTime);
                 }
@@ -119,7 +119,7 @@ namespace EState
         // 지정된 포지션은 빈 게임오브젝트를 생성해서 넣어놓는거로
 
     }
-}
+
 
 
     public class HittedEnemyState : EnemyState
@@ -172,22 +172,24 @@ namespace EState
 
         public override void MainLoop()
         {
+            _enemy.GetComponent<EnemyBulletFire>().CheckAndFire();
             Debug.Log("공격");
             _enemy.ChangeUnitState(_enemy.MoveState);
         }
     }
 
-public class DieState : EnemyState
-{
-    public override void OnEnter(Enemy enemy)
+    public class DieState : EnemyState
     {
-        base.OnEnter(enemy);
-    }
-    public override void MainLoop()
-    {
-        //죽는 애니메이션 실행
-        Managers.Resource.Destroy(_enemy.gameObject);
-        _enemy._enemyCount++;
+        public override void OnEnter(Enemy enemy)
+        {
+            base.OnEnter(enemy);
+        }
+        public override void MainLoop()
+        {
+            //죽는 애니메이션 실행
+            Managers.Resource.Destroy(_enemy.gameObject);
+            _enemy._enemyCount++;
+        }
     }
 }
 

@@ -31,7 +31,7 @@ public class CannonEnemy : EnemyBase
     public override void Init()
     {
        // _eStat = Managers.Data.GetEnemyInfo(Define.EnemyType.CannonEnemy);
-        _eType = Define.EnemyType.SniperEnemy;
+        _eType = Define.EnemyType.CannonEnemy;
         _obj = Managers.Resource.Instantiate("CannonEnemy");
         _obj.GetComponent<Enemy>().init(this);
         _obj.GetComponent<Enemy>()._enemyCount++;
@@ -44,7 +44,7 @@ public class ThreeShotEnemy : EnemyBase
     public override void Init()
     {
       //  _eStat = Managers.Data.GetEnemyInfo(Define.EnemyType.ThreeShotEnemy);
-        _eType = Define.EnemyType.SniperEnemy;
+        _eType = Define.EnemyType.ThreeShotEnemy;
         _obj = Managers.Resource.Instantiate("ThreeShotEnemy");
         _obj.GetComponent<Enemy>().init(this);
         _obj.GetComponent<Enemy>()._enemyCount++;

@@ -5,26 +5,38 @@ using Utils;
 
 public class EnemyBulletFire : MonoBehaviour
 {
-   
+   Define.EnemyBulletType _bulletType;
 
     // Update is called once per frame
-    void Update()
+    public void CheckAndFire()
     {
-        if (GetComponent<Enemy>().sendEnemyBase.getEnemyType == Define.EnemyType.ThreeShotEnemy)
+        if (GetComponent<Enemy>().EnemyType == Define.EnemyType.ThreeShotEnemy)
         {
-            Debug.Log("발사");
+            _bulletType = Define.EnemyBulletType.ThreeShot;
             StartCoroutine(CoThreeShot());
 
         }
+        Debug.Log(GetComponent<Enemy>().EnemyType);
     }
 
     IEnumerator CoThreeShot()
     {
+        Vector3 tmp;
         int i = 0;
+
+        tmp = transform.position;
+        tmp.z -= 1;
         while (i < 3)
         {
-            GenericSingleton<BulletFactory>.getInstance().ThreeShotFire();
+            BulletBase _bb = GenericSingleton<BulletFactory>.getInstance().CreateBullet(_bulletType);
+            
+            _bb.BulletObj.GetComponent<Bullet>().BulletMove(GenericSingleton<EnemyController>.getInstance().Target);
+            tmp.y += Random.Range(-0.1f, 0.1f);
+            tmp.x += Random.Range(-0.1f, 0.1f);
+            _bb.BulletObj.transform.position = tmp;
             i++;
+            Debug.Log("발사");
+            yield return new WaitForSeconds(1f);
         }
         yield return new WaitForSeconds(5f);
     }

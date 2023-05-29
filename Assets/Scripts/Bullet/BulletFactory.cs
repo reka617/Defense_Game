@@ -8,14 +8,16 @@ public class BulletFactory : MonoBehaviour
     void Init()
     {
         if (bFactories.Count > 0) return;
+        bFactories.Add(new ThreeShotBulletFactory());    
+        bFactories.Add(new ThreeShotBulletFactory());
         bFactories.Add(new ThreeShotBulletFactory());
        
     }
 
-    public BulletBase ThreeShotFire()
+    public BulletBase CreateBullet(Define.EnemyBulletType EBT)
     {
         Init();
-        return bFactories[0].MakeBullet();
+        return bFactories[(int)EBT].MakeBullet();
     }
 }
 
