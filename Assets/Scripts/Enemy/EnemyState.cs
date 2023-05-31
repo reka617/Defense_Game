@@ -188,7 +188,7 @@ namespace EState
         {
             //죽는 애니메이션 실행
             Managers.Resource.Destroy(_enemy.gameObject);
-            _enemy._enemyCount++;
+            _enemy.EnemyCount++;
         }
     }
 }

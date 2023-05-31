@@ -21,7 +21,7 @@ public class SniperEnemy : EnemyBase
         _eType = Define.EnemyType.SniperEnemy;
         _obj = Managers.Resource.Instantiate("SniperEnemy");
         _obj.GetComponent<Enemy>().init(this);
-        _obj.GetComponent<Enemy>()._enemyCount++;
+        _obj.GetComponent<Enemy>().EnemyCount++;
         _obj.transform.position = new Vector3(Random.Range(-10f, 10f), 20f, Random.Range(10f, 60f));
     }
 }
@@ -34,7 +34,7 @@ public class CannonEnemy : EnemyBase
         _eType = Define.EnemyType.CannonEnemy;
         _obj = Managers.Resource.Instantiate("CannonEnemy");
         _obj.GetComponent<Enemy>().init(this);
-        _obj.GetComponent<Enemy>()._enemyCount++;
+        _obj.GetComponent<Enemy>().EnemyCount++;
         _obj.transform.position = new Vector3(Random.Range(-10f, 10f), 20f, Random.Range(10f, 60f));
     }
 }
@@ -47,7 +47,7 @@ public class ThreeShotEnemy : EnemyBase
         _eType = Define.EnemyType.ThreeShotEnemy;
         _obj = Managers.Resource.Instantiate("ThreeShotEnemy");
         _obj.GetComponent<Enemy>().init(this);
-        _obj.GetComponent<Enemy>()._enemyCount++;
+        _obj.GetComponent<Enemy>().EnemyCount++;
         _obj.transform.position = new Vector3(Random.Range(-10f, 10f), 20f, Random.Range(10f, 60f));
     }
 }
@@ -60,7 +60,7 @@ public class EliteEnemy : EnemyBase
         _eType = Define.EnemyType.SniperEnemy;
         _obj = Managers.Resource.Instantiate("EliteEnemy");
         _obj.GetComponent<Enemy>().init(this);
-        _obj.GetComponent<Enemy>()._enemyCount++;
+        _obj.GetComponent<Enemy>().EnemyCount++;
         _obj.transform.position = new Vector3(Random.Range(-10f, 10f), 20f, Random.Range(10f, 60f));
     }
 }

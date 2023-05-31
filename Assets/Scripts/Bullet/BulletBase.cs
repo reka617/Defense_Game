@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -11,38 +12,41 @@ public abstract class BulletBase
 
     public GameObject BulletObj { get { return _obj; } }
 
-    public abstract void Init();
+    public abstract void Init(GameController GC);
 }
 
 public class LaserShotBullet : BulletBase
 {
-    public override void Init()
+    public override void Init(GameController GC)
     {
         _bType = Define.EnemyBulletType.Laser;
         _obj = Managers.Resource.Instantiate("EnemyBullet");
         _obj.GetComponent<Bullet>().Init(this);
+        _obj.GetComponent<Bullet>().Init(GC);
         _obj.transform.position = new Vector3(0, 0, 0);
     }
 }
 
 public class ParabolaShotBullet : BulletBase
 {
-    public override void Init()
+    public override void Init(GameController GC)
     {
         _bType = Define.EnemyBulletType.Parabola;
         _obj = Managers.Resource.Instantiate("EnemyBullet");
         _obj.GetComponent<Bullet>().Init(this);
+        _obj.GetComponent<Bullet>().Init(GC);
         _obj.transform.position = new Vector3(0, 0, 0);
     }
 }
 
 public class ThreeShotBullet : BulletBase
 {
-    public override void Init()
+    public override void Init(GameController GC)
     {
         _bType = Define.EnemyBulletType.ThreeShot;
         _obj = Managers.Resource.Instantiate("EnemyBullet");
         _obj.GetComponent<Bullet>().Init(this);
+        _obj.GetComponent<Bullet>().Init(GC);
         _obj.transform.position = new Vector3(0, 0, 0);
     }
 }
@@ -50,7 +54,7 @@ public class ThreeShotBullet : BulletBase
 
 public class StudentBullet : BulletBase
 {
-    public override void Init()
+    public override void Init(GameController GC)
     {
         _obj = Managers.Resource.Instantiate("Bullet");
         _obj.AddComponent<Bullet>().Init(this);

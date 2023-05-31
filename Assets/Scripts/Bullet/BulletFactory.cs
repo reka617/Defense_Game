@@ -23,15 +23,21 @@ public class BulletFactory : MonoBehaviour
 
 public abstract class BulletFactoryBase
 {
+    protected GameController _GC;
+    public BulletFactoryBase()
+    {
+        _GC = GameObject.Find("GameController").GetComponent<GameController>();
+    }
     public abstract BulletBase MakeBullet();
 }
 
 public class ThreeShotBulletFactory : BulletFactoryBase
 {
+
     public override BulletBase MakeBullet()
     {
         BulletBase bul = new ThreeShotBullet();
-        bul.Init();
+        bul.Init(_GC);
         return bul;
     }
 }

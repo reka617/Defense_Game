@@ -5,9 +5,6 @@ using UnityEngine;
 
 public class Stage : MonoBehaviour
 {
-    public void init(EnemyController EC)
-    {
 
-    }
 }
 

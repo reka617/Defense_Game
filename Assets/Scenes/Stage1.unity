@@ -2528,7 +2528,7 @@ GameObject:
   - component: {fileID: 722846943}
   - component: {fileID: 722846942}
   m_Layer: 0
-  m_Name: EnemyController
+  m_Name: GameController
   m_TagString: EnemyController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5936,7 +5936,7 @@ MonoBehaviour:
   _stageUI: {fileID: 1466566537}
   _stageClear: {fileID: 452513568}
   _stageFail: {fileID: 2092585157}
-  _EC: {fileID: 722846942}
+  _GC: {fileID: 0}
 --- !u!4 &1852227341
 Transform:
   m_ObjectHideFlags: 0

@@ -13,8 +13,11 @@ public class Enemy : MonoBehaviour
 
     public bool isDie = false;
     public bool isHitted = false;
-    public int _enemyCount;
 
+
+    int _enemyCount;
+
+    public int EnemyCount { get { return _enemyCount; } set { _enemyCount = value; } }
     float _bulletDamage;
     public float BulletDamage { get { return _bulletDamage; } }
     public Define.Enemy EnemyStat { get { return _EB.getEnemyStat; } }

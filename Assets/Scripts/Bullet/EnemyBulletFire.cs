@@ -5,7 +5,13 @@ using Utils;
 
 public class EnemyBulletFire : MonoBehaviour
 {
-   Define.EnemyBulletType _bulletType;
+    GameController _GC;
+    Define.EnemyBulletType _bulletType;
+    
+    public void Init(GameController GC)
+    {
+        _GC = GC;
+    }
 
     // Update is called once per frame
     public void CheckAndFire()
@@ -30,7 +36,7 @@ public class EnemyBulletFire : MonoBehaviour
         {
             BulletBase _bb = GenericSingleton<BulletFactory>.getInstance().CreateBullet(_bulletType);
             
-            _bb.BulletObj.GetComponent<Bullet>().BulletMove(GenericSingleton<EnemyController>.getInstance().Target);
+            _bb.BulletObj.GetComponent<Bullet>().BulletMove();
             tmp.y += Random.Range(-0.1f, 0.1f);
             tmp.x += Random.Range(-0.1f, 0.1f);
             _bb.BulletObj.transform.position = tmp;

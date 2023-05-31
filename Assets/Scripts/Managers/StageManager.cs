@@ -8,7 +8,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] GameObject _stageUI;
     [SerializeField] GameObject _stageClear;
     [SerializeField] GameObject _stageFail;
-    [SerializeField] EnemyController _EC;
+    [SerializeField] GameController _GC;
     // Start is called before the first frame update
 
     private void Start()
