@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     BulletBase _BB;
     Rigidbody _rig;
     GameController _GC;
+    float _bulletDamage;
     
 
     [SerializeField] float bulletSpeed;
@@ -22,10 +23,14 @@ public class Bullet : MonoBehaviour
         _GC = GC;
     }
 
-
-    public void BulletMove() //업데이트로 해줘야함
+    private void Start()
     {
         _rig = GetComponent<Rigidbody>();
+        
+    }
+
+    public void BulletMove() 
+    {
         _dir = (_GC.Target.position - transform.position).normalized;
         _rig.AddForce(_dir * bulletSpeed, ForceMode.Impulse);
     }
@@ -37,7 +42,16 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
+        BulletMove();
         BulletRemove();
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Student")
+        {
+            _bulletDamage = gameObject.GetComponent<BulletDamage>().ProjectileDamage;
+            Destroy(gameObject);
+        }
+    }
 }

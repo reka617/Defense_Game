@@ -22,7 +22,6 @@ public class EnemyBulletFire : MonoBehaviour
             StartCoroutine(CoThreeShot());
 
         }
-        Debug.Log(GetComponent<Enemy>().EnemyType);
     }
 
     IEnumerator CoThreeShot()
@@ -35,8 +34,8 @@ public class EnemyBulletFire : MonoBehaviour
         while (i < 3)
         {
             BulletBase _bb = GenericSingleton<BulletFactory>.getInstance().CreateBullet(_bulletType);
-            
-            _bb.BulletObj.GetComponent<Bullet>().BulletMove();
+
+            _bb.BulletObj.GetComponent<Bullet>();
             tmp.y += Random.Range(-0.1f, 0.1f);
             tmp.x += Random.Range(-0.1f, 0.1f);
             _bb.BulletObj.transform.position = tmp;

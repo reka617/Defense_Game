@@ -3,7 +3,9 @@ using UnityEngine;
 public class BulletDamage : MonoBehaviour
 {
     [SerializeField]
-    int _Damage;
+    float _damage;
+
+    public float ProjectileDamage { get { return _damage; } }
     // Start is called before the first frame update
     void Start()
     {
@@ -14,10 +16,5 @@ public class BulletDamage : MonoBehaviour
     void Update()
     {
         
-    }
-
-    public int getDamage()
-    {
-        return _Damage;
     }
 }
