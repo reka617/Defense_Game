@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -3736744986074857176}
   - component: {fileID: -7919181866510952471}
   - component: {fileID: -1714712701755527623}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CannonEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDie: 0
   isHitted: 0
-  _enemyCount: 0
 --- !u!54 &-7919181866510952471
 Rigidbody:
   m_ObjectHideFlags: 0

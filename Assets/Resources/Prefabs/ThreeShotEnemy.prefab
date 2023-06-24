@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7232919751695657572}
   - component: {fileID: 8013831269753827957}
   - component: {fileID: -6911314146621450953}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ThreeShotEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -128,7 +128,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDie: 0
   isHitted: 0
-  _enemyCount: 0
 --- !u!54 &8013831269753827957
 Rigidbody:
   m_ObjectHideFlags: 0

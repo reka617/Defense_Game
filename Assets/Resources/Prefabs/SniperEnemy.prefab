@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6496454025183064780}
   - component: {fileID: 5559888879474694201}
   - component: {fileID: -514944549750700718}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SniperEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDie: 0
   isHitted: 0
-  _enemyCount: 0
 --- !u!114 &6287476848321782373
 MonoBehaviour:
   m_ObjectHideFlags: 0

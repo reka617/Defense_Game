@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4670069177963220197}
   - component: {fileID: 9150966122307918493}
   - component: {fileID: 8386140399900146830}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Hp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -87,7 +87,7 @@ GameObject:
   - component: {fileID: 2071676961936231031}
   - component: {fileID: 2336150593999240844}
   - component: {fileID: 7305396338274879466}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: HpBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 3957611228792744994}
   - component: {fileID: 1404853216189453773}
   - component: {fileID: -162992293815492735}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EliteEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -269,7 +269,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDie: 0
   isHitted: 0
-  _enemyCount: 0
 --- !u!54 &3957611228792744994
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -322,7 +321,7 @@ GameObject:
   - component: {fileID: 6590148448879044200}
   - component: {fileID: 5839768565997306691}
   - component: {fileID: 9116163208164475453}
-  m_Layer: 5
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}

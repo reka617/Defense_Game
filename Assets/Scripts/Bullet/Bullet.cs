@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
     BulletBase _BB;
     Rigidbody _rig;
     GameController _GC;
+    bool isCollision = false;
     float _bulletDamage;
     
 
@@ -26,7 +27,6 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         _rig = GetComponent<Rigidbody>();
-        
     }
 
     public void BulletMove() 
@@ -41,16 +41,27 @@ public class Bullet : MonoBehaviour
     }
 
     private void Update()
-    {
-        BulletMove();
+    { 
         BulletRemove();
+        if (!isCollision)
+        {
+            BulletMove();
+        }
+        else
+        {
+            _rig.AddForce(Vector3.zero);
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag == "Student")
+        if (other.gameObject.tag == "Student")
         {
+            isCollision = true;
             _bulletDamage = gameObject.GetComponent<BulletDamage>().ProjectileDamage;
+            gameObject.transform.position = Vector3.zero;
+            Debug.Log(gameObject);
             Destroy(gameObject);
         }
     }
