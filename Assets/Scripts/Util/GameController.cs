@@ -4,9 +4,6 @@ using Utils;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] Transform _studentPosition;
-    public Transform Target { get { return _studentPosition; } }
-    
     List<Enemy> enemies = new List<Enemy>();
 
     private void Start()

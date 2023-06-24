@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
     Vector3 _dir;
     BulletBase _BB;
     Rigidbody _rig;
-    GameController _GC;
+    Student _ST;
     bool isCollision = false;
     float _bulletDamage;
     
@@ -19,9 +19,9 @@ public class Bullet : MonoBehaviour
         _BB = BB;
     }
 
-    public void Init(GameController GC)
+    public void Init(Student ST)
     {
-        _GC = GC;
+        _ST = ST;
     }
 
     private void Start()
@@ -31,7 +31,7 @@ public class Bullet : MonoBehaviour
 
     public void BulletMove() 
     {
-        _dir = (_GC.Target.position - transform.position).normalized;
+        _dir = (_ST.StudentPosition.position - transform.position).normalized;
         _rig.AddForce(_dir * bulletSpeed, ForceMode.Impulse);
     }
 
@@ -42,13 +42,14 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     { 
-        BulletRemove();
         if (!isCollision)
         {
             BulletMove();
+            BulletRemove();
         }
         else
         {
+            Destroy(gameObject);
             _rig.AddForce(Vector3.zero);
         }
     }
@@ -59,9 +60,10 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.tag == "Student")
         {
             isCollision = true;
+            Debug.Log("충돌!");
             _bulletDamage = gameObject.GetComponent<BulletDamage>().ProjectileDamage;
-            gameObject.transform.position = Vector3.zero;
-            Debug.Log(gameObject);
+            Debug.Log("데미지부여");
+            Debug.Log(gameObject.tag);
             Destroy(gameObject);
         }
     }

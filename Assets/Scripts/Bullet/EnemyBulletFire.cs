@@ -5,13 +5,7 @@ using Utils;
 
 public class EnemyBulletFire : MonoBehaviour
 {
-    GameController _GC;
     Define.EnemyBulletType _bulletType;
-    
-    public void Init(GameController GC)
-    {
-        _GC = GC;
-    }
 
     // Update is called once per frame
     public void CheckAndFire()
@@ -19,7 +13,8 @@ public class EnemyBulletFire : MonoBehaviour
         if (GetComponent<Enemy>().EnemyType == Define.EnemyType.ThreeShotEnemy)
         {
             _bulletType = Define.EnemyBulletType.ThreeShot;
-            StartCoroutine(CoThreeShot());
+            StartCoroutine(CoThreeShot());  
+            
 
         }
     }

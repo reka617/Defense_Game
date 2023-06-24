@@ -8,8 +8,8 @@ public class BulletFactory : MonoBehaviour
     void Init()
     {
         if (bFactories.Count > 0) return;
-        bFactories.Add(new ThreeShotBulletFactory());    
-        bFactories.Add(new ThreeShotBulletFactory());
+        bFactories.Add(new LaserShotBulletFactory());    
+        bFactories.Add(new ParabolaShotBulletFactory());
         bFactories.Add(new ThreeShotBulletFactory());
        
     }
@@ -23,21 +23,39 @@ public class BulletFactory : MonoBehaviour
 
 public abstract class BulletFactoryBase
 {
-    protected GameController _GC;
+    protected Student _ST;
     public BulletFactoryBase()
     {
-        _GC = GameObject.Find("GameController").GetComponent<GameController>();
+        _ST = GameObject.Find("Student").GetComponent<Student>();
     }
     public abstract BulletBase MakeBullet();
 }
 
+public class LaserShotBulletFactory : BulletFactoryBase 
+{
+    public override BulletBase MakeBullet() 
+    {
+        BulletBase bul = new LaserShotBullet();
+        bul.Init(_ST);
+        return bul;
+    }
+}
+
+public class ParabolaShotBulletFactory : BulletFactoryBase {
+    public override BulletBase MakeBullet() 
+    {
+        BulletBase bul = new ParabolaShotBullet();
+        bul.Init(_ST);
+        return bul;
+    }
+}
+
 public class ThreeShotBulletFactory : BulletFactoryBase
 {
-
     public override BulletBase MakeBullet()
     {
         BulletBase bul = new ThreeShotBullet();
-        bul.Init(_GC);
+        bul.Init(_ST);
         return bul;
     }
 }

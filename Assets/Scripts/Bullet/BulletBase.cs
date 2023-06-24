@@ -12,41 +12,41 @@ public abstract class BulletBase
 
     public GameObject BulletObj { get { return _obj; } }
 
-    public abstract void Init(GameController GC);
+    public abstract void Init(Student ST);
 }
 
 public class LaserShotBullet : BulletBase
 {
-    public override void Init(GameController GC)
+    public override void Init(Student ST)
     {
         _bType = Define.EnemyBulletType.Laser;
         _obj = Managers.Resource.Instantiate("EnemyBullet");
         _obj.GetComponent<Bullet>().Init(this);
-        _obj.GetComponent<Bullet>().Init(GC);
+        _obj.GetComponent<Bullet>().Init(ST);
         _obj.transform.position = new Vector3(0, 0, 0);
     }
 }
 
 public class ParabolaShotBullet : BulletBase
 {
-    public override void Init(GameController GC)
+    public override void Init(Student ST)
     {
         _bType = Define.EnemyBulletType.Parabola;
         _obj = Managers.Resource.Instantiate("EnemyBullet");
         _obj.GetComponent<Bullet>().Init(this);
-        _obj.GetComponent<Bullet>().Init(GC);
+        _obj.GetComponent<Bullet>().Init(ST);
         _obj.transform.position = new Vector3(0, 0, 0);
     }
 }
 
 public class ThreeShotBullet : BulletBase
 {
-    public override void Init(GameController GC)
+    public override void Init(Student ST)
     {
         _bType = Define.EnemyBulletType.ThreeShot;
         _obj = Managers.Resource.Instantiate("EnemyBullet");
         _obj.GetComponent<Bullet>().Init(this);
-        _obj.GetComponent<Bullet>().Init(GC);
+        _obj.GetComponent<Bullet>().Init(ST);
         _obj.transform.position = new Vector3(0, 0, 0);
     }
 }
@@ -54,7 +54,7 @@ public class ThreeShotBullet : BulletBase
 
 public class StudentBullet : BulletBase
 {
-    public override void Init(GameController GC)
+    public override void Init(Student ST)
     {
         _obj = Managers.Resource.Instantiate("Bullet");
         _obj.AddComponent<Bullet>().Init(this);

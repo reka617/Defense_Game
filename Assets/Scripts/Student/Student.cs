@@ -6,7 +6,7 @@ public class Student : MonoBehaviour
 {
     StudentState _state;
 
-    public Vector3 StudentPosition { get { return transform.position; } }
+    public Transform StudentPosition { get { return transform; } }
     private void Start()
     {
         Init();
@@ -24,7 +24,7 @@ public class Student : MonoBehaviour
 
     public void Init()
     {
-        transform.position = new Vector3(0, 1, -1); 
+        transform.position = new Vector3(0, 0, 0); 
     }
 
 
@@ -33,5 +33,4 @@ public class Student : MonoBehaviour
         _state = state;
         if (_state != null) _state.OnEnter(this);
     }
-
 }
