@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using Utils;
 
 public abstract class BulletBase
 {
@@ -11,6 +6,7 @@ public abstract class BulletBase
     protected Define.EnemyBulletType _bType;
 
     public GameObject BulletObj { get { return _obj; } }
+    public Define.EnemyBulletType BType { get { return _bType; } }
 
     public abstract void Init(Student ST);
 }
@@ -32,7 +28,7 @@ public class ParabolaShotBullet : BulletBase
     public override void Init(Student ST)
     {
         _bType = Define.EnemyBulletType.Parabola;
-        _obj = Managers.Resource.Instantiate("EnemyBullet");
+        _obj = Managers.Resource.Instantiate("ParabolaBullet");
         _obj.GetComponent<Bullet>().Init(this);
         _obj.GetComponent<Bullet>().Init(ST);
         _obj.transform.position = new Vector3(0, 0, 0);

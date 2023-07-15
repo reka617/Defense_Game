@@ -15,10 +15,9 @@ GameObject:
   - component: {fileID: 5602016500164560477}
   - component: {fileID: 6287476848321782373}
   - component: {fileID: 6496454025183064780}
-  - component: {fileID: 5559888879474694201}
   - component: {fileID: -514944549750700718}
   m_Layer: 6
-  m_Name: SniperEnemy
+  m_Name: LaserEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,18 +143,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &5559888879474694201
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5057278192326438378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09bd937dc4b52ee4fb052f333483156f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-514944549750700718
 MonoBehaviour:
   m_ObjectHideFlags: 0

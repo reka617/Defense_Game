@@ -7,8 +7,8 @@ public class EnemyFactory : MonoBehaviour
     void Init()
     {
         if (eFactories.Count > 0) return;
-        eFactories.Add(new SniperEnemyFactory());
-        eFactories.Add(new CannonEnemyFactory());
+        eFactories.Add(new LaserEnemyFactory());
+        eFactories.Add(new ParabolaEnemyFactory());
         eFactories.Add(new ThreeShotEnemyFactory());
         eFactories.Add(new EliteEnemyFactory());
     }
@@ -27,21 +27,21 @@ public abstract class EnemyFactoryBase
     public abstract EnemyBase MakeEnemy();
 }
 
-public class SniperEnemyFactory : EnemyFactoryBase
+public class LaserEnemyFactory : EnemyFactoryBase
 {
     public override EnemyBase MakeEnemy()
     {
-        EnemyBase mon = new SniperEnemy();
+        EnemyBase mon = new LaserEnemy();
         mon.Init();
         return mon;
     }
 }
 
-public class CannonEnemyFactory : EnemyFactoryBase
+public class ParabolaEnemyFactory : EnemyFactoryBase
 {
     public override EnemyBase MakeEnemy()
     {
-        EnemyBase mon = new CannonEnemy();
+        EnemyBase mon = new ParabolaEnemy();
         mon.Init();
         return mon;
     }

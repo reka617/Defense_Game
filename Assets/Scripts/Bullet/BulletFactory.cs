@@ -17,7 +17,8 @@ public class BulletFactory : MonoBehaviour
     public BulletBase CreateBullet(Define.EnemyBulletType EBT)
     {
         Init();
-        return bFactories[(int)EBT].MakeBullet();
+        BulletBase bb = bFactories[(int)EBT].MakeBullet();
+        return bb;
     }
 }
 
@@ -26,7 +27,7 @@ public abstract class BulletFactoryBase
     protected Student _ST;
     public BulletFactoryBase()
     {
-        _ST = GameObject.Find("Student").GetComponent<Student>();
+        _ST = GameObject.Find("Student_Root").GetComponent<Student>();
     }
     public abstract BulletBase MakeBullet();
 }

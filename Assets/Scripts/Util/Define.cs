@@ -31,8 +31,8 @@ namespace Define
 
     public enum EnemyType
     {
-        SniperEnemy,
-        CannonEnemy,
+        LaserEnemy,
+        ParabolaEnemy,
         ThreeShotEnemy,
         EliteEnemy
     }
@@ -51,5 +51,6 @@ namespace Define
         Laser,
         Parabola,
         ThreeShot,
+        Bomb
     }
 }

@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
 {
     // 몬스터의 종류는 다 투사체형이며 캐논형, 저격형, 3연발형, 레이저형(엘리트)  4가지로 구현
     EnemyBase _EB;
+    BulletBase _BB;
     EnemyState _state;
     MoveState _MV;
     Student _ST;

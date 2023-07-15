@@ -13,26 +13,26 @@ public abstract class EnemyBase
     public abstract void Init();
 }
 
-public class SniperEnemy : EnemyBase
+public class LaserEnemy : EnemyBase
 {
     public override void Init()
     {
         //_eStat = Managers.Data.GetEnemyInfo(Define.EnemyType.SniperEnemy);
-        _eType = Define.EnemyType.SniperEnemy;
-        _obj = Managers.Resource.Instantiate("SniperEnemy");
+        _eType = Define.EnemyType.LaserEnemy;
+        _obj = Managers.Resource.Instantiate("LaserEnemy");
         _obj.GetComponent<Enemy>().init(this);
         _obj.GetComponent<Enemy>().EnemyCount++;
         _obj.transform.position = new Vector3(Random.Range(-10f, 10f), 20f, Random.Range(10f, 60f));
     }
 }
 
-public class CannonEnemy : EnemyBase
+public class ParabolaEnemy : EnemyBase
 {
     public override void Init()
     {
        // _eStat = Managers.Data.GetEnemyInfo(Define.EnemyType.CannonEnemy);
-        _eType = Define.EnemyType.CannonEnemy;
-        _obj = Managers.Resource.Instantiate("CannonEnemy");
+        _eType = Define.EnemyType.ParabolaEnemy;
+        _obj = Managers.Resource.Instantiate("ParabolaEnemy");
         _obj.GetComponent<Enemy>().init(this);
         _obj.GetComponent<Enemy>().EnemyCount++;
         _obj.transform.position = new Vector3(Random.Range(-10f, 10f), 20f, Random.Range(10f, 60f));
@@ -56,8 +56,8 @@ public class EliteEnemy : EnemyBase
 {
     public override void Init()
     {
-      //  _eStat = Managers.Data.GetEnemyInfo(Define.EnemyType.EliteEnemy);
-        _eType = Define.EnemyType.SniperEnemy;
+        //  _eStat = Managers.Data.GetEnemyInfo(Define.EnemyType.EliteEnemy);
+        _eType = Define.EnemyType.EliteEnemy;
         _obj = Managers.Resource.Instantiate("EliteEnemy");
         _obj.GetComponent<Enemy>().init(this);
         _obj.GetComponent<Enemy>().EnemyCount++;
