@@ -4,7 +4,7 @@ public class Bullet : MonoBehaviour
 {
     Vector3 _mouseAim;
     Vector3 _dir;
-    Vector3 studentPosition;
+    Vector3 StudentPosition;
 
     BulletBase _BB;
     Rigidbody _rig;
@@ -34,10 +34,15 @@ public class Bullet : MonoBehaviour
 
     public void BulletMove() 
     {
-        studentPosition = _ST.StudentPosition.position;
-        studentPosition.y += 0.5f;
-        _dir = (studentPosition - transform.position).normalized;
+        StudentPosition = _ST.StudentPosition.position;
+        StudentPosition.y += 0.5f;
+        _dir = (StudentPosition - transform.position).normalized;
         _rig.AddForce(_dir * bulletSpeed, ForceMode.Impulse);
+    }
+
+    public void ParabolaBulletMove() 
+    {
+        
     }
 
 
@@ -49,15 +54,32 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-        if (!isCollision)
+        if (Define.EnemyBulletType.Parabola != _BB.BType) 
         {
-            BulletMove();
-            BulletRemove();
+            if (!isCollision)
+            {
+                BulletMove();
+                BulletRemove();
+            }
+            else 
+            {
+                Destroy(gameObject);
+                _rig.AddForce(Vector3.zero);
+            }
         }
-        else
+        else 
         {
-            Destroy(gameObject);
-            _rig.AddForce(Vector3.zero);
+            if(!isCollision) 
+            {
+                ParabolaBulletMove();
+                BulletRemove();
+            }
+            else 
+            {
+                Destroy(gameObject);
+                _rig.AddForce(Vector3.zero);
+            }
+
         }
     }
 

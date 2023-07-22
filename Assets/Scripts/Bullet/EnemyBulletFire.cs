@@ -5,17 +5,9 @@ using Utils;
 
 public class EnemyBulletFire : MonoBehaviour
 {
-    Transform target;
     Define.EnemyBulletType _bulletType;
 
-    float firingAngle = 45f;
-    float gravity = 9.8f;
-
-    public void Start()
-    {
-        target = GameObject.FindWithTag("Student").transform;
-    }
-
+    // Update is called once per frame
     public void CheckAndFire()
     {
         if (GetComponent<Enemy>().EnemyType == Define.EnemyType.ThreeShotEnemy)
@@ -35,42 +27,13 @@ public class EnemyBulletFire : MonoBehaviour
         {
             _bulletType = Define.EnemyBulletType.Parabola;
             Debug.Log("포물탄환발사");
-            StartCoroutine(CoParabolaShot());
 
-            
-        }
-    }
+            Vector3 tmp = transform.position;
+            tmp.z -= 1;
 
-    IEnumerator CoParabolaShot()
-    {
-        yield return new WaitForSeconds(2f);
+            BulletBase _bb = GenericSingleton<BulletFactory>.getInstance().CreateBullet(_bulletType);
 
-        Vector3 tmp = transform.position;
-        tmp.z -= 1;
-
-        BulletBase _bb = GenericSingleton<BulletFactory>.getInstance().CreateBullet(_bulletType);
-
-        _bb.BulletObj.transform.position = tmp;
-
-        float target_Distance = Vector3.Distance(_bb.BulletObj.transform.position, target.position);
-        float projectile_Velocity = target_Distance / (Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / gravity);
-
-        float Vx = Mathf.Sqrt(projectile_Velocity) * Mathf.Cos(firingAngle * Mathf.Deg2Rad);
-        float Vy = Mathf.Sqrt(projectile_Velocity) * Mathf.Sin(firingAngle * Mathf.Deg2Rad);
-
-        float flightDuration = target_Distance / Vx;
-
-        _bb.BulletObj.transform.rotation = Quaternion.LookRotation(target.position - _bb.BulletObj.transform.position);
-
-        float elapse_time = 0;
-
-        while (elapse_time < flightDuration)
-        {
-            _bb.BulletObj.transform.Translate(0, (Vy - (gravity * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
-
-            elapse_time += Time.deltaTime;
-
-            yield return null;
+            _bb.BulletObj.transform.position = tmp;
         }
     }
 
