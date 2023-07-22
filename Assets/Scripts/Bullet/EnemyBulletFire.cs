@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using Utils;
 
@@ -8,13 +9,9 @@ public class EnemyBulletFire : MonoBehaviour
     Transform target;
     Define.EnemyBulletType _bulletType;
 
-    float firingAngle = 45f;
+    float firingAngle = 30f;
     float gravity = 9.8f;
 
-    public void Start()
-    {
-        target = GameObject.FindWithTag("Student").transform;
-    }
 
     public void CheckAndFire()
     {
@@ -35,44 +32,28 @@ public class EnemyBulletFire : MonoBehaviour
         {
             _bulletType = Define.EnemyBulletType.Parabola;
             Debug.Log("포물탄환발사");
-            StartCoroutine(CoParabolaShot());
-
+            //ParabolaShot();
             
         }
     }
 
-    IEnumerator CoParabolaShot()
-    {
-        yield return new WaitForSeconds(2f);
+    //void ParabolaShot()
+    //{
+    //    Vector3 tmp;
 
-        Vector3 tmp = transform.position;
-        tmp.z -= 1;
+    //    tmp = transform.position;
+    //    tmp.z -= 1;
 
-        BulletBase _bb = GenericSingleton<BulletFactory>.getInstance().CreateBullet(_bulletType);
+    //    BulletBase _bb = GenericSingleton<BulletFactory>.getInstance().CreateBullet(_bulletType);
+    //    _bb.BulletObj.transform.position = tmp;
+    //    //_bb.BulletObj.AddComponent<Parabola>();
 
-        _bb.BulletObj.transform.position = tmp;
+    //    //_bb.BulletObj.GetComponent<Bullet>().ParabolaBulletMove();
+    //    //Debug.Log("포물shot");
+    //    Debug.Log("중복확인");
+    //}
 
-        float target_Distance = Vector3.Distance(_bb.BulletObj.transform.position, target.position);
-        float projectile_Velocity = target_Distance / (Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / gravity);
 
-        float Vx = Mathf.Sqrt(projectile_Velocity) * Mathf.Cos(firingAngle * Mathf.Deg2Rad);
-        float Vy = Mathf.Sqrt(projectile_Velocity) * Mathf.Sin(firingAngle * Mathf.Deg2Rad);
-
-        float flightDuration = target_Distance / Vx;
-
-        _bb.BulletObj.transform.rotation = Quaternion.LookRotation(target.position - _bb.BulletObj.transform.position);
-
-        float elapse_time = 0;
-
-        while (elapse_time < flightDuration)
-        {
-            _bb.BulletObj.transform.Translate(0, (Vy - (gravity * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
-
-            elapse_time += Time.deltaTime;
-
-            yield return null;
-        }
-    }
 
     IEnumerator CoThreeShot()
     {
@@ -84,14 +65,17 @@ public class EnemyBulletFire : MonoBehaviour
         while (i < 3)
         {
             BulletBase _bb = GenericSingleton<BulletFactory>.getInstance().CreateBullet(_bulletType);
-
             tmp.y += Random.Range(-0.1f, 0.1f);
             tmp.x += Random.Range(-0.1f, 0.1f);
             _bb.BulletObj.transform.position = tmp;
             i++;
+
+            //_bb.BulletObj.GetComponent<Bullet>().BulletMove();
             Debug.Log("발사");
             yield return new WaitForSeconds(1f);
         }
+
+       
         yield return new WaitForSeconds(5f);
     }
 }

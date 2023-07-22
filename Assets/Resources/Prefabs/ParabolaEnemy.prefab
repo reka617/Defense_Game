@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -5801461503512047056}
   - component: {fileID: -3736744986074857176}
   - component: {fileID: -7919181866510952471}
-  - component: {fileID: -1714712701755527623}
+  - component: {fileID: -1556164063161232496}
   m_Layer: 6
   m_Name: ParabolaEnemy
   m_TagString: Untagged
@@ -144,7 +144,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!114 &-1714712701755527623
+--- !u!114 &-1556164063161232496
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

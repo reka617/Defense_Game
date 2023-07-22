@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2390575593997916989}
   - component: {fileID: 813516036218720166}
   - component: {fileID: 2070566744780783330}
-  - component: {fileID: 3828684860350890028}
   - component: {fileID: 3186627449210770591}
   - component: {fileID: -2785614698821569385}
+  - component: {fileID: 6580397374569104048}
   m_Layer: 0
   m_Name: ParabolaBullet
   m_TagString: Untagged
@@ -100,19 +100,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3828684860350890028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4539145945374196396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a9edd10627500242a6b5e85521acf99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletSpeed: 0.01
 --- !u!114 &3186627449210770591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,3 +129,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6580397374569104048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4539145945374196396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 879ae31a7a7851d4ab054ccbb2179adc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Target: {fileID: 0}
+  m_InitialAngle: 30
