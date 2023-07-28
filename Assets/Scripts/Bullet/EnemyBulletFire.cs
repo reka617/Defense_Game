@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Utils;
@@ -10,10 +11,6 @@ public class EnemyBulletFire : MonoBehaviour
     float firingAngle = 45f;
     float gravity = 9.8f;
 
-    public void Start()
-    {
-        target = GameObject.FindWithTag("Student").transform;
-    }
 
     public void CheckAndFire()
     {
@@ -45,6 +42,7 @@ public class EnemyBulletFire : MonoBehaviour
         }
     }
 
+
    
     IEnumerator CoThreeShot()
     {
@@ -56,7 +54,6 @@ public class EnemyBulletFire : MonoBehaviour
         while (i < 3)
         {
             BulletBase _bb = GenericSingleton<BulletFactory>.getInstance().CreateBullet(_bulletType);
-
             tmp.y += Random.Range(-0.1f, 0.1f);
             tmp.x += Random.Range(-0.1f, 0.1f);
             _bb.BulletObj.transform.position = tmp;
@@ -64,6 +61,8 @@ public class EnemyBulletFire : MonoBehaviour
             Debug.Log("발사");
             yield return new WaitForSeconds(1f);
         }
+
+       
         yield return new WaitForSeconds(5f);
     }
 

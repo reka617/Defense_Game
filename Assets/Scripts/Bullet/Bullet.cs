@@ -39,6 +39,13 @@ public class Bullet : MonoBehaviour
         _rig.AddForce(_dir * bulletSpeed, ForceMode.Impulse);
     }
 
+    public void ParabolaBulletMove()
+    {
+        float m_InitialAngle = 30f;
+        Vector3 velocity = GetComponent<Parabola>().GetVelocity(transform.position, _ST.StudentPosition.position, m_InitialAngle);
+        _rig.velocity = velocity;
+    }
+
 
 
     public void BulletRemove()
@@ -48,7 +55,12 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
+<<<<<<< HEAD
         if (Define.EnemyBulletType.Parabola != _BB.BType) 
+=======
+
+        if (!isCollision)
+>>>>>>> 37fdd471c0bc94c676017e21559d3d325346942c
         {
             if (isCollision)
             {
@@ -62,6 +74,7 @@ public class Bullet : MonoBehaviour
                 BulletRemove();
             }
         }
+
     }
 
 
