@@ -7,15 +7,14 @@ using Utils;
 public class EnemyBulletFire : MonoBehaviour
 {
     Define.EnemyBulletType _bulletType;
-
-    Transform Target;
     float firingAngle = 45f;
     float gravity = 9.8f;
 
-    private void Awake()
+    public void Start()
     {
-        Target = GameObject.FindWithTag("Student").transform;
+        target = GameObject.FindWithTag("Student").transform;
     }
+
     public void CheckAndFire()
     {
         if (GetComponent<Enemy>().EnemyType == Define.EnemyType.ThreeShotEnemy)
@@ -46,7 +45,7 @@ public class EnemyBulletFire : MonoBehaviour
         }
     }
 
-    
+   
     IEnumerator CoThreeShot()
     {
         Vector3 tmp;
