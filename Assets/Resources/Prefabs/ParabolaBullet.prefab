@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2070566744780783330}
   - component: {fileID: 3186627449210770591}
   - component: {fileID: -2785614698821569385}
-  - component: {fileID: 6580397374569104048}
+  - component: {fileID: -2128123447893640617}
   m_Layer: 0
   m_Name: ParabolaBullet
   m_TagString: Untagged
@@ -129,7 +129,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6580397374569104048
+--- !u!114 &-2128123447893640617
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,8 +138,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4539145945374196396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 879ae31a7a7851d4ab054ccbb2179adc, type: 3}
+  m_Script: {fileID: 11500000, guid: 2a9edd10627500242a6b5e85521acf99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Target: {fileID: 0}
-  m_InitialAngle: 30
+  bulletSpeed: 0

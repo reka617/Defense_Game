@@ -55,12 +55,7 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
-<<<<<<< HEAD
         if (Define.EnemyBulletType.Parabola != _BB.BType) 
-=======
-
-        if (!isCollision)
->>>>>>> 37fdd471c0bc94c676017e21559d3d325346942c
         {
             if (isCollision)
             {

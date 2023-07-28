@@ -8,10 +8,14 @@ using Utils;
 public class EnemyBulletFire : MonoBehaviour
 {
     Define.EnemyBulletType _bulletType;
+    Transform Target;
     float firingAngle = 45f;
     float gravity = 9.8f;
 
-
+    private void Awake()
+    {
+        Target = GameObject.FindWithTag("Student").transform;
+    }
     public void CheckAndFire()
     {
         if (GetComponent<Enemy>().EnemyType == Define.EnemyType.ThreeShotEnemy)
