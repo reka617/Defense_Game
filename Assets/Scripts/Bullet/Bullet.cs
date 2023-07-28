@@ -15,7 +15,6 @@ public class Bullet : MonoBehaviour
 
 
     [SerializeField] float bulletSpeed;
-    float _lifeTime = 5;
 
     public void Init(BulletBase BB)
     {
@@ -40,46 +39,28 @@ public class Bullet : MonoBehaviour
         _rig.AddForce(_dir * bulletSpeed, ForceMode.Impulse);
     }
 
-    public void ParabolaBulletMove() 
-    {
-        
-    }
-
 
 
     public void BulletRemove()
     {
-        Destroy(gameObject, _lifeTime);
+        Managers.Resource.Destroy(gameObject);
     }
 
     private void Update()
     {
         if (Define.EnemyBulletType.Parabola != _BB.BType) 
         {
-            if (!isCollision)
+            if (isCollision)
             {
-                BulletMove();
                 BulletRemove();
-            }
-            else 
-            {
-                Destroy(gameObject);
-                _rig.AddForce(Vector3.zero);
             }
         }
         else 
         {
-            if(!isCollision) 
+            if(isCollision) 
             {
-                ParabolaBulletMove();
                 BulletRemove();
             }
-            else 
-            {
-                Destroy(gameObject);
-                _rig.AddForce(Vector3.zero);
-            }
-
         }
     }
 
