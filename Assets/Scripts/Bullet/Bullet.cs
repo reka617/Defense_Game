@@ -3,12 +3,14 @@ using DG.Tweening;
 public class Bullet : MonoBehaviour
 {
     Vector3 _mouseAim;
-    Vector3 _dir;
-    Vector3 StudentPosition;
+    Vector3 _enemyCurrentPosition;
+
+    public Vector3 EnemyCurrentPosition { get { return _enemyCurrentPosition; } }
 
     BulletBase _BB;
     Rigidbody _rig;
     Student _ST;
+    Enemy _enemy;
 
     bool isCollision = false;
     float _bulletDamage;
@@ -21,31 +23,11 @@ public class Bullet : MonoBehaviour
         _BB = BB;
     }
 
-    public void Init(Student ST)
+    public void Init(Enemy enemy)
     {
-        _ST = ST;
+        _enemy = enemy;
+        _enemyCurrentPosition = _enemy.CurrentPosition;
     }
-
-    private void Start()
-    {
-        _rig = GetComponent<Rigidbody>();
-    }
-
-    public void BulletMove() 
-    {
-        StudentPosition = _ST.StudentPosition.position;
-        StudentPosition.y += 0.5f;
-        _dir = (StudentPosition - transform.position).normalized;
-        _rig.AddForce(_dir * bulletSpeed, ForceMode.Impulse);
-    }
-
-    public void ParabolaBulletMove()
-    {
-        float m_InitialAngle = 30f;
-        Vector3 velocity = GetComponent<Parabola>().GetVelocity(transform.position, _ST.StudentPosition.position, m_InitialAngle);
-        _rig.velocity = velocity;
-    }
-
 
 
     public void BulletRemove()
@@ -61,12 +43,30 @@ public class Bullet : MonoBehaviour
             {
                 BulletRemove();
             }
+            else
+            {
+                float time = 0;
+                time += Time.deltaTime;
+                if(time > 8)
+                {
+                    BulletRemove();
+                }
+            }
         }
         else 
         {
             if(isCollision) 
             {
                 BulletRemove();
+            }
+            else
+            {
+                float time = 0;
+                time += Time.deltaTime;
+                if (time > 8)
+                {
+                    BulletRemove();
+                }
             }
         }
 
@@ -82,7 +82,7 @@ public class Bullet : MonoBehaviour
             _bulletDamage = gameObject.GetComponent<BulletDamage>().ProjectileDamage;
             Debug.Log("데미지부여");
             Debug.Log(gameObject.tag);
-            Destroy(gameObject);
+            BulletRemove();
         }
     }
 }

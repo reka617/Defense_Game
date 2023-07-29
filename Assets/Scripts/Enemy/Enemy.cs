@@ -11,9 +11,12 @@ public class Enemy : MonoBehaviour
     Student _ST;
 
     Vector3 _initPostion;
+    Vector3 _currentPosition;
 
     public bool isDie = false;
     public bool isHitted = false;
+
+    public float enemySpeed = 1;
 
 
     int _enemyCount;
@@ -25,11 +28,13 @@ public class Enemy : MonoBehaviour
     public Define.EnemyType EnemyType { get { return _EB.getEnemyType; } }
     public EnemyBase sendEnemyBase { get { return _EB; } }
     public Vector3 InitPosition { get { return _initPostion; } }
+    public Vector3 CurrentPosition { get { return _currentPosition; } }
     public MoveState MoveState { get { return _MV; } }
 
 
     private void Update()
     {
+        _currentPosition = transform.position;
         if (_state == null)
         {
             _state = new RespawnState();

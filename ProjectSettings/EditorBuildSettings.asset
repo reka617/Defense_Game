@@ -4,29 +4,5 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Login.unity
-    guid: aa13adf933c1a4f4098e4fe47a511639
-  - enabled: 1
-    path: Assets/Scenes/Lobby.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/Scenes/Stage1.unity
-    guid: 18da1dd80a2f78647ab19f7afec713c9
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 1
-    path: Assets/Scenes/StudentRecord.unity
-    guid: 55d954c055c462241ac65dbf0f334c7f
-  - enabled: 1
-    path: Assets/Scenes/StageSelect.unity
-    guid: 6ba856575f5ab5e4991ce4cf82b21d53
-  - enabled: 1
-    path: Assets/Scenes/Character.unity
-    guid: b1ea13d2298ddf541ad916a1e770a144
-  - enabled: 1
-    path: Assets/Scenes/Shop.unity
-    guid: 2fb02cb3f73181f4a99d18744955d523
+  m_Scenes: []
   m_configObjects: {}

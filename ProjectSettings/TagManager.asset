@@ -3,29 +3,23 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Unit
-  - EnemyController
-  - UnitBox
-  - Ground
-  - Student
-  - Bullet
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
-  - Bullet
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - 9 Wheel
+  - 10 Reinforce
+  - 11 MainBody
+  - 12 Bullet
+  - 13 Armor Collider
+  - 14 Extra Collider
   - 
   - 
   - 

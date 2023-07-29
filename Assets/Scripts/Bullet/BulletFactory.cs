@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static BulletBase;
 
 public class BulletFactory : MonoBehaviour
 {
@@ -14,49 +15,44 @@ public class BulletFactory : MonoBehaviour
        
     }
 
-    public BulletBase CreateBullet(Define.EnemyBulletType EBT)
+    public BulletBase CreateBullet(Define.EnemyBulletType EBT, Enemy enemy)
     {
         Init();
-        BulletBase bb = bFactories[(int)EBT].MakeBullet();
+        BulletBase bb = bFactories[(int)EBT].MakeBullet(enemy);
         return bb;
     }
 }
 
 public abstract class BulletFactoryBase
 {
-    protected Student _ST;
-    public BulletFactoryBase()
-    {
-        _ST = GameObject.Find("Student_Root").GetComponent<Student>();
-    }
-    public abstract BulletBase MakeBullet();
+    public abstract BulletBase MakeBullet(Enemy enemy);
 }
 
 public class LaserShotBulletFactory : BulletFactoryBase 
 {
-    public override BulletBase MakeBullet() 
+    public override BulletBase MakeBullet(Enemy enemy) 
     {
         BulletBase bul = new LaserShotBullet();
-        bul.Init(_ST);
+        bul.Init(enemy);
         return bul;
     }
 }
 
 public class ParabolaShotBulletFactory : BulletFactoryBase {
-    public override BulletBase MakeBullet() 
+    public override BulletBase MakeBullet(Enemy enemy) 
     {
         BulletBase bul = new ParabolaShotBullet();
-        bul.Init(_ST);
+        bul.Init(enemy);
         return bul;
     }
 }
 
 public class ThreeShotBulletFactory : BulletFactoryBase
 {
-    public override BulletBase MakeBullet()
+    public override BulletBase MakeBullet(Enemy enemy)
     {
         BulletBase bul = new ThreeShotBullet();
-        bul.Init(_ST);
+        bul.Init(enemy);
         return bul;
     }
 }

@@ -32,7 +32,7 @@ public class ParabolaEnemy : EnemyBase
     {
        // _eStat = Managers.Data.GetEnemyInfo(Define.EnemyType.CannonEnemy);
         _eType = Define.EnemyType.ParabolaEnemy;
-        _obj = Managers.Resource.Instantiate("ParabolaEnemy");
+        _obj = Managers.Resource.Instantiate("RockMob");
         _obj.GetComponent<Enemy>().init(this);
         _obj.GetComponent<Enemy>().EnemyCount++;
         _obj.transform.position = new Vector3(Random.Range(-10f, 10f), 20f, Random.Range(10f, 60f));
@@ -45,7 +45,7 @@ public class ThreeShotEnemy : EnemyBase
     {
       //  _eStat = Managers.Data.GetEnemyInfo(Define.EnemyType.ThreeShotEnemy);
         _eType = Define.EnemyType.ThreeShotEnemy;
-        _obj = Managers.Resource.Instantiate("ThreeShotEnemy");
+        _obj = Managers.Resource.Instantiate("WaterMob");
         _obj.GetComponent<Enemy>().init(this);
         _obj.GetComponent<Enemy>().EnemyCount++;
         _obj.transform.position = new Vector3(Random.Range(-10f, 10f), 20f, Random.Range(10f, 60f));

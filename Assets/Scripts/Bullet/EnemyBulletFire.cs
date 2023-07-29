@@ -1,14 +1,12 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.UIElements;
 using Utils;
 
 public class EnemyBulletFire : MonoBehaviour
 {
     Define.EnemyBulletType _bulletType;
     Transform Target;
+    Enemy _E;
     float firingAngle = 45f;
     float gravity = 9.8f;
 
@@ -16,13 +14,23 @@ public class EnemyBulletFire : MonoBehaviour
     {
         Target = GameObject.FindWithTag("Student").transform;
     }
+
+    private void Update()
+    {
+        _E = GetComponent<Enemy>();
+    }
     public void CheckAndFire()
     {
         if (GetComponent<Enemy>().EnemyType == Define.EnemyType.ThreeShotEnemy)
         {
             _bulletType = Define.EnemyBulletType.ThreeShot;
+
             Debug.Log("삼연발발사");
-            StartCoroutine(CoThreeShot());  
+            for (int i = 0; i < 3; i++)
+            {
+                GenericSingleton<BulletFactory>.getInstance().CreateBullet(_bulletType, _E);
+            }
+            //StartCoroutine(CoThreeShot());  
         }
 
         if(GetComponent<Enemy>().EnemyType == Define.EnemyType.LaserEnemy) 
@@ -39,7 +47,7 @@ public class EnemyBulletFire : MonoBehaviour
             Vector3 tmp = transform.position;
             tmp.z -= 1;
 
-            BulletBase _bb = GenericSingleton<BulletFactory>.getInstance().CreateBullet(_bulletType);
+            BulletBase _bb = GenericSingleton<BulletFactory>.getInstance().CreateBullet(_bulletType, _E);
 
             _bb.BulletObj.transform.position = tmp;
            StartCoroutine(CoParabolaShot(_bb.BulletObj.transform));
@@ -48,27 +56,27 @@ public class EnemyBulletFire : MonoBehaviour
 
 
    
-    IEnumerator CoThreeShot()
-    {
-        Vector3 tmp;
-        int i = 0;
+    //IEnumerator CoThreeShot()
+    //{
+    //    Vector3 tmp;
+    //    int i = 0;
 
-        tmp = transform.position;
-        tmp.z -= 1;
-        while (i < 3)
-        {
-            BulletBase _bb = GenericSingleton<BulletFactory>.getInstance().CreateBullet(_bulletType);
-            tmp.y += Random.Range(-0.1f, 0.1f);
-            tmp.x += Random.Range(-0.1f, 0.1f);
-            _bb.BulletObj.transform.position = tmp;
-            i++;
-            Debug.Log("발사");
-            yield return new WaitForSeconds(1f);
-        }
+    //    tmp = transform.position;
+    //    tmp.z -= 1;
+    //    while (i < 3)
+    //    {
+    //        BulletBase _bb = GenericSingleton<BulletFactory>.getInstance().CreateBullet(_bulletType);
+    //        tmp.y += Random.Range(-0.1f, 0.1f);
+    //        tmp.x += Random.Range(-0.1f, 0.1f);
+    //        _bb.BulletObj.transform.position = tmp;
+    //        i++;
+    //        Debug.Log("발사");
+    //        yield return new WaitForSeconds(1f);
+    //    }
 
        
-        yield return new WaitForSeconds(5f);
-    }
+    //    yield return new WaitForSeconds(5f);
+    //}
 
     IEnumerator CoParabolaShot(Transform Projectile)
     { 
@@ -92,7 +100,6 @@ public class EnemyBulletFire : MonoBehaviour
 
         while (elapse_time < flightDuration)
         {
-            Debug.Log(Projectile.transform.position);
             Projectile.Translate(0, (Vy - (gravity * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
 
             elapse_time += Time.deltaTime;
