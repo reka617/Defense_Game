@@ -14,9 +14,15 @@ public class Bullet : MonoBehaviour
 
     bool isCollision = false;
     float _bulletDamage;
+    float bulletLifeTime;
 
 
     [SerializeField] float bulletSpeed;
+
+    public void Init()
+    {
+        isCollision = false;
+    }
 
     public void Init(BulletBase BB)
     {
@@ -26,7 +32,6 @@ public class Bullet : MonoBehaviour
     public void Init(Enemy enemy)
     {
         _enemy = enemy;
-        _enemyCurrentPosition = _enemy.CurrentPosition;
     }
 
 
@@ -35,8 +40,13 @@ public class Bullet : MonoBehaviour
         Managers.Resource.Destroy(gameObject);
     }
 
+    private void Start()
+    {
+        Init();
+    }
     private void Update()
     {
+        _enemyCurrentPosition = _enemy.CurrentPosition;
         if (Define.EnemyBulletType.Parabola != _BB.BType) 
         {
             if (isCollision)
@@ -45,11 +55,12 @@ public class Bullet : MonoBehaviour
             }
             else
             {
-                float time = 0;
-                time += Time.deltaTime;
-                if(time > 8)
+                bulletLifeTime += Time.deltaTime;
+                if(bulletLifeTime > 8)
                 {
                     BulletRemove();
+                    Debug.Log(bulletLifeTime);
+                    bulletLifeTime = 0;
                 }
             }
         }
@@ -81,7 +92,6 @@ public class Bullet : MonoBehaviour
             Debug.Log("충돌!");
             _bulletDamage = gameObject.GetComponent<BulletDamage>().ProjectileDamage;
             Debug.Log("데미지부여");
-            Debug.Log(gameObject.tag);
             BulletRemove();
         }
     }

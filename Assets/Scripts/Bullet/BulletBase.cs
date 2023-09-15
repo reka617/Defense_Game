@@ -39,7 +39,6 @@ public abstract class BulletBase
         {
             _bType = Define.EnemyBulletType.ThreeShot;
             _obj = Managers.Resource.Instantiate("WaterBall");
-            _obj.AddComponent<ThreeShot>();
             _obj.GetComponent<Bullet>().Init(this);
             _obj.GetComponent<Bullet>().Init(enemy);
         }

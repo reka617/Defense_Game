@@ -25,10 +25,11 @@ public class EnemyBulletFire : MonoBehaviour
         {
             _bulletType = Define.EnemyBulletType.ThreeShot;
 
-            Debug.Log("삼연발발사");
+            
             for (int i = 0; i < 3; i++)
             {
                 GenericSingleton<BulletFactory>.getInstance().CreateBullet(_bulletType, _E);
+                Debug.Log("물불릿생성" + i);
             }
             //StartCoroutine(CoThreeShot());  
         }
@@ -50,12 +51,12 @@ public class EnemyBulletFire : MonoBehaviour
             BulletBase _bb = GenericSingleton<BulletFactory>.getInstance().CreateBullet(_bulletType, _E);
 
             _bb.BulletObj.transform.position = tmp;
-           StartCoroutine(CoParabolaShot(_bb.BulletObj.transform));
+            StartCoroutine(CoParabolaShot(_bb.BulletObj.transform));
         }
     }
 
 
-   
+
     //IEnumerator CoThreeShot()
     //{
     //    Vector3 tmp;
@@ -74,16 +75,16 @@ public class EnemyBulletFire : MonoBehaviour
     //        yield return new WaitForSeconds(1f);
     //    }
 
-       
+
     //    yield return new WaitForSeconds(5f);
     //}
 
     IEnumerator CoParabolaShot(Transform Projectile)
-    { 
+    {
         Projectile.position = transform.position + new Vector3(0, 0.0f, 0);
 
 
-        float target_Distance = Vector3.Distance(Projectile.position, Target.position); 
+        float target_Distance = Vector3.Distance(Projectile.position, Target.position);
 
 
         float projectile_Velocity = target_Distance / (Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / gravity);

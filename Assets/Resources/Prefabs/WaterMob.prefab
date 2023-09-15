@@ -64,7 +64,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &-6658065094003664244
 MonoBehaviour:
@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDie: 0
   isHitted: 0
+  enemySpeed: 1
 --- !u!114 &-190577849065870558
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 4364483863229046024}
   - component: {fileID: -5577601944034789298}
   - component: {fileID: -8173476319049503478}
-  m_Layer: 6
+  m_Layer: 12
   m_Name: WaterBall
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9edd10627500242a6b5e85521acf99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 3
+  bulletSpeed: 1
 --- !u!114 &4364483863229046024
 MonoBehaviour:
   m_ObjectHideFlags: 0
