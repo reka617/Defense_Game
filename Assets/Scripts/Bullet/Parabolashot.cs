@@ -24,7 +24,6 @@ public class Parabolashot : MonoBehaviour
 
     private void OnEnable()
     {
-        bulletStartPosition = GetComponent<Bullet>().EnemyCurrentPosition;
         ParabolaMethod();
     }
 

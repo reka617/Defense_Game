@@ -37,6 +37,7 @@ public class Bullet : MonoBehaviour
 
     public void BulletRemove()
     {
+
         Managers.Resource.Destroy(gameObject);
     }
 
@@ -47,46 +48,29 @@ public class Bullet : MonoBehaviour
     private void Update()
     {
         _enemyCurrentPosition = _enemy.CurrentPosition;
-        if (Define.EnemyBulletType.Parabola != _BB.BType) 
+
+        if (isCollision)
         {
-            if (isCollision)
+            BulletRemove();
+        }
+        else
+        {
+            bulletLifeTime += Time.deltaTime;
+            if (bulletLifeTime >= 8)
             {
                 BulletRemove();
-            }
-            else
-            {
-                bulletLifeTime += Time.deltaTime;
-                if(bulletLifeTime > 8)
-                {
-                    BulletRemove();
-                    Debug.Log(bulletLifeTime);
-                    bulletLifeTime = 0;
-                }
+                Debug.Log(bulletLifeTime);
+                bulletLifeTime = 0;
             }
         }
-        else 
-        {
-            if(isCollision) 
-            {
-                BulletRemove();
-            }
-            else
-            {
-                float time = 0;
-                time += Time.deltaTime;
-                if (time > 8)
-                {
-                    BulletRemove();
-                }
-            }
-        }
+
 
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Student")
+        if (other.gameObject.CompareTag("Student"))
         {
             isCollision = true;
             Debug.Log("Ãæµ¹!");

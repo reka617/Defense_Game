@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class PoolManager : MonoBehaviour
+public class PoolManager 
 {
     Dictionary<string, Pool> _pool = new Dictionary<string, Pool>();
 

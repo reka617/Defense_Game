@@ -28,8 +28,9 @@ public class EnemyBulletFire : MonoBehaviour
             
             for (int i = 0; i < 3; i++)
             {
-                GenericSingleton<BulletFactory>.getInstance().CreateBullet(_bulletType, _E);
+                BulletBase _tb = GenericSingleton<BulletFactory>.getInstance().CreateBullet(_bulletType, _E);
                 Debug.Log("물불릿생성" + i);
+                ThreeShotMethod(_tb);
             }
             //StartCoroutine(CoThreeShot());  
         }
@@ -48,11 +49,17 @@ public class EnemyBulletFire : MonoBehaviour
             Vector3 tmp = transform.position;
             tmp.z -= 1;
 
-            BulletBase _bb = GenericSingleton<BulletFactory>.getInstance().CreateBullet(_bulletType, _E);
+            BulletBase _pb = GenericSingleton<BulletFactory>.getInstance().CreateBullet(_bulletType, _E);
 
-            _bb.BulletObj.transform.position = tmp;
-            StartCoroutine(CoParabolaShot(_bb.BulletObj.transform));
+            _pb.BulletObj.transform.position = tmp;
+            StartCoroutine(CoParabolaShot(_pb.BulletObj.transform));
         }
+    }
+
+    public void ThreeShotMethod(BulletBase BB)
+    {
+        BB.BulletObj.transform.position = gameObject.transform.position + new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(0.2f, 0.4f), -1);
+        Debug.Log("삼연발 위치설정");
     }
 
 

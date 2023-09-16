@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace SState
 {
-    public class StudentState : MonoBehaviour
+    public class StudentState
     {
         protected Student _student;
 
