@@ -125,6 +125,7 @@ class Pool
             poolable.transform.parent = Camera.main.transform;
 
         poolable.transform.parent = parent;
+
         poolable.IsUsing = true;
 
         return poolable;

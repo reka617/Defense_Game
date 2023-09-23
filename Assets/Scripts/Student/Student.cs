@@ -19,7 +19,7 @@ public class Student : MonoBehaviour
             _state.OnEnter(this);
         }
         if (_state != null) _state.MainLoop();
-        Debug.Log("현재 상태 :" + _state);
+        //Debug.Log("현재 상태 :" + _state);
     }
 
     public void Init()

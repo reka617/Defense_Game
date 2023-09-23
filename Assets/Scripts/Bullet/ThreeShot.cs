@@ -16,7 +16,6 @@ public class ThreeShot : MonoBehaviour
     private void Start()
     {
         Target = GameObject.FindWithTag("Student").transform;
-        Target.position += new Vector3(0, 0.5f, 0);
         _rig = GetComponent<Rigidbody>();
     }
     // Start is called before the first frame update
@@ -28,7 +27,7 @@ public class ThreeShot : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        _dir = (Target.position - transform.position).normalized;
+        _dir = ((Target.position + new Vector3(0, 0.5f, 0)) - transform.position).normalized;
         _rig.AddForce(_dir * bulletSpeed, ForceMode.Impulse);
     }
 

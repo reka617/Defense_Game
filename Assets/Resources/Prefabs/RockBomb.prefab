@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3186627449210770591}
   - component: {fileID: -2785614698821569385}
   - component: {fileID: -2128123447893640617}
+  - component: {fileID: 3203113068139965750}
   m_Layer: 12
   m_Name: RockBomb
   m_TagString: Bullet
@@ -142,3 +143,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 0
+--- !u!114 &3203113068139965750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4539145945374196396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54433056a9c874b41a1783f50d51461e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -44,7 +44,7 @@ namespace EState
 
         //bool isLeft = true;
         //bool isRight = false;
-        float moveMax = 2.0f;
+        float moveMax = 3.0f;
         float waitTime = 0;
         float startTime = 5;
         Vector3 initSpot;
@@ -67,7 +67,6 @@ namespace EState
             _isHitted = _enemy.isHitted;
             // 소환된 위치에서 지정된 포지션으로 이동 //좌우로 이동을 위해서 x좌표로 패트롤// 적 패트롤 구현
             _enemy.transform.position = Vector3.MoveTowards(_enemy.transform.position, nextSpot, _enemy.enemySpeed * Time.deltaTime);
-            Debug.Log("이동");
 
             if (Vector3.Distance(_enemy.transform.position, nextSpot) < 0.1f)
             {
@@ -89,7 +88,6 @@ namespace EState
                     isAttack = true;
                     _enemy.ChangeUnitState(new AttackState());
                 }
-                Debug.Log(nextSpot);
             }
             else
             {

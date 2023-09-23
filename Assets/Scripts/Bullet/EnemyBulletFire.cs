@@ -58,7 +58,8 @@ public class EnemyBulletFire : MonoBehaviour
 
     public void ThreeShotMethod(BulletBase BB)
     {
-        BB.BulletObj.transform.position = gameObject.transform.position + new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(0.2f, 0.4f), -1);
+        BB.BulletObj.transform.position = gameObject.transform.position + new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(0.2f, 0.8f), -1);
+        Debug.Log(BB.BulletObj.transform.position);
         Debug.Log("삼연발 위치설정");
     }
 
@@ -108,6 +109,8 @@ public class EnemyBulletFire : MonoBehaviour
 
         while (elapse_time < flightDuration)
         {
+            if (Projectile == null)
+                break;
             Projectile.Translate(0, (Vy - (gravity * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
 
             elapse_time += Time.deltaTime;

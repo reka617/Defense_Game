@@ -16,7 +16,7 @@ public abstract class BulletBase
         {
             _bType = Define.EnemyBulletType.Laser;
             _obj = Managers.Resource.Instantiate("WaterBall");
-            _obj.GetComponent<Bullet>().Init(this);
+            //_obj.GetComponent<Bullet>().Init(this);
             _obj.GetComponent<Bullet>().Init(enemy);
         }
     }
@@ -27,7 +27,7 @@ public abstract class BulletBase
         {
             _bType = Define.EnemyBulletType.Parabola;
             _obj = Managers.Resource.Instantiate("RockBomb");
-            _obj.GetComponent<Bullet>().Init(this);
+            //_obj.GetComponent<Bullet>().Init(this);
             _obj.GetComponent<Bullet>().Init(enemy);
             _obj.transform.position = new Vector3(0, 0, 0);
         }
@@ -39,7 +39,7 @@ public abstract class BulletBase
         {
             _bType = Define.EnemyBulletType.ThreeShot;
             _obj = Managers.Resource.Instantiate("WaterBall");
-            _obj.GetComponent<Bullet>().Init(this);
+            //_obj.GetComponent<Bullet>().Init(this);
             _obj.GetComponent<Bullet>().Init(enemy);
         }
     }
@@ -50,7 +50,7 @@ public abstract class BulletBase
         public override void Init(Enemy enemy)
         {
             _obj = Managers.Resource.Instantiate("Bullet");
-            _obj.AddComponent<Bullet>().Init(this);
+            //_obj.AddComponent<Bullet>().Init(this);
             _obj.transform.position = new Vector3(0, 1, 0);
         }
     }
